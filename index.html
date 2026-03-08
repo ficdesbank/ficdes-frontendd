@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<!-- 
+  FICDES BANK S.A — Page vitrine publique
+  Dépôt : public (GitHub/GitLab public)
+  ⚠️  Ce fichier ne contient AUCUNE logique CPF, AUCUNE clé, AUCUNE route API.
+  Les pages CPF sont hébergées sur https://app.ficdesbank.net (dépôt privé séparé).
+-->
+
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FICDES INVESTMENT GROUP – Institution financière panafricaine. Finance internationale, banque digitale, carte CPF, transfert CASH FLOW, carte VISA professionnelle.">
+  <meta name="keywords" content="FICDES, banque panafricaine, carte CPF, CASH FLOW, VISA professionnel, financement Afrique, Togo, investissement">
+  <meta property="og:title" content="FICDES INVESTMENT GROUP – FICDES BANK S.A">
+  <meta property="og:description" content="Finance internationale, banque en ligne, transfert d'argent, carte CPF, VISA professionnel – votre partenaire financier panafricain.">
+  <meta property="og:type" content="website">
+  <title>FICDES INVESTMENT GROUP</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   VARIABLES
+══════════════════════════════════════════════════════════════ */
+:root {
+  --gold:        #C8992A;
+  --gold-lt:     #E8C060;
+  --gold-dk:     #8A6510;
+  --navy:        #0A1628;
+  --navy-mid:    #152340;
+  --navy-lt:     #1E3560;
+  --teal:        #00957A;
+  --teal-lt:     #00C49F;
+  --white:       #FFFFFF;
+  --off-white:   #F7F5F0;
+  --text:        #1C2B45;
+  --muted:       #667085;
+  --border:      #E2DDD4;
+  --shadow-gold: 0 8px 32px rgba(200,153,42,.22);
+  --shadow-navy: 0 8px 32px rgba(10,22,40,.22);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Syne', sans-serif;
+  --radius:       10px;
+  --radius-lg:    20px;
+  --tr:           .28s cubic-bezier(.4,0,.2,1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RESET & BASE
+══════════════════════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-body); color: var(--text); background: var(--white); line-height: 1.65; overflow-x: hidden; }
+img  { max-width: 100%; display: block; }
+a    { color: inherit; text-decoration: none; }
+h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.15; }
+ul   { list-style: none; }
+
+/* ══════════════════════════════════════════════════════════════
+   UTILITIES
+══════════════════════════════════════════════════════════════ */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 12px;
+  background: rgba(200,153,42,.12);
+  border: 1px solid rgba(200,153,42,.3);
+  border-radius: 100px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gold);
+}
+
+.section-badge { margin-bottom: 14px; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem,3.5vw,2.8rem);
+  color: var(--navy);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.section-title em { font-style: normal; color: var(--gold); }
+.section-sub { font-size: .96rem; color: var(--muted); max-width: 560px; line-height: 1.7; }
+.section-header { margin-bottom: 56px; }
+
+/* Divider */
+.gold-line {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+  border-radius: 2px;
+  margin: 14px 0 18px;
+}
+
+/* Buttons */
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  color: var(--navy);
+  font-family: var(--font-body); font-size: .88rem; font-weight: 700;
+  letter-spacing: .04em;
+  border-radius: var(--radius); border: none; cursor: pointer;
+  transition: transform var(--tr), box-shadow var(--tr);
+  box-shadow: 0 4px 16px rgba(200,153,42,.3);
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: var(--shadow-gold); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px;
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255,255,255,.4);
+  font-family: var(--font-body); font-size: .88rem; font-weight: 600;
+  border-radius: var(--radius); cursor: pointer;
+  transition: background var(--tr), border-color var(--tr);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.8); }
+
+/* ══════════════════════════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════════════════════════ */
+#navbar {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(10,22,40,.96);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(200,153,42,.18);
+  transition: box-shadow var(--tr);
+}
+#navbar.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,.35); }
+
+.nav-inner {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 28px; max-width: 1200px; margin: 0 auto;
+}
+
+.nav-logo { height: 42px; flex-shrink: 0; }
+
+.nav-links {
+  display: flex; gap: 2px; margin-left: auto; align-items: center; flex-wrap: wrap;
+}
+.nav-links a {
+  padding: 7px 13px;
+  font-size: .82rem; font-weight: 600; letter-spacing: .03em;
+  color: rgba(255,255,255,.7);
+  border-radius: 6px;
+  transition: color var(--tr), background var(--tr);
+}
+.nav-links a:hover { color: var(--gold-lt); background: rgba(200,153,42,.1); }
+
+.lang-wrap { position: relative; margin-left: 12px; }
+.lang-wrap i {
+  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+  font-size: .72rem; color: var(--gold); pointer-events: none;
+}
+#lang-select {
+  appearance: none;
+  padding: 7px 12px 7px 26px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(200,153,42,.3);
+  border-radius: 6px;
+  font-family: var(--font-body); font-size: .82rem; font-weight: 600;
+  color: rgba(255,255,255,.85); cursor: pointer;
+  transition: border-color var(--tr);
+}
+#lang-select:focus { outline: 2px solid var(--gold); border-color: transparent; }
+#lang-select option { background: var(--navy); color: var(--white); }
+
+/* ══════════════════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════════════════ */
+#hero {
+  position: relative; min-height: 620px;
+  display: flex; align-items: center;
+  background: var(--navy);
+  overflow: hidden; color: var(--white);
+  padding: 100px 28px;
+}
+
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('assets/fond1.png');
+  background-size: cover; background-position: center;
+  opacity: .25;
+  animation: heroPan 9s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes heroPan {
+  0%   { transform: scale(1.06) translateX(-2%); }
+  100% { transform: scale(1.06) translateX(2%); }
+}
+
+.hero-pattern {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(200,153,42,.04) 0, rgba(200,153,42,.04) 1px, transparent 0, transparent 50%),
+    repeating-linear-gradient(-45deg, rgba(200,153,42,.04) 0, rgba(200,153,42,.04) 1px, transparent 0, transparent 50%);
+  background-size: 40px 40px;
+}
+
+.hero-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-lt), var(--gold), transparent);
+}
+
+.hero-glow {
+  position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+}
+.hero-glow-1 { width: 500px; height: 500px; background: rgba(200,153,42,.12); top: -150px; right: -100px; }
+.hero-glow-2 { width: 350px; height: 350px; background: rgba(0,149,122,.1); bottom: -100px; left: 5%; }
+
+.hero-content { position: relative; z-index: 2; max-width: 760px; }
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin-bottom: 22px;
+  font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold-lt);
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; display: block;
+  width: 24px; height: 1px; background: var(--gold);
+}
+
+#hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.05;
+  margin-bottom: 6px;
+}
+#hero h1 span { color: var(--gold-lt); }
+
+#hero h2 {
+  font-family: var(--font-body); font-size: clamp(.95rem,1.8vw,1.15rem);
+  font-weight: 400; opacity: .6; margin-bottom: 18px;
+}
+
+.hero-tagline { font-size: .92rem; opacity: .55; margin-bottom: 8px; }
+.hero-values {
+  font-size: 1rem; font-weight: 700; letter-spacing: .07em;
+  color: var(--gold-lt); margin-bottom: 38px;
+}
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.3);
+  animation: scrollBob 2s ease-in-out infinite;
+}
+.hero-scroll i { font-size: .85rem; color: var(--gold); }
+@keyframes scrollBob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════════════════════════ */
+#about { padding: 108px 0; background: var(--white); }
+
+.about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: start; }
+
+.about-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-weight: 700; font-size: .75rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 10px;
+}
+
+.about-text {
+  font-size: .96rem; color: var(--text); line-height: 1.85; margin-bottom: 14px;
+}
+.about-text strong { color: var(--navy); font-weight: 700; }
+
+.about-pillars { display: flex; flex-direction: column; gap: 18px; }
+
+.pillar {
+  display: flex; gap: 16px; padding: 22px 22px;
+  background: var(--off-white);
+  border-radius: var(--radius);
+  border-left: 3px solid var(--gold);
+  transition: box-shadow var(--tr), transform var(--tr);
+}
+.pillar:hover { box-shadow: var(--shadow-gold); transform: translateX(5px); }
+
+.pillar-icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+.pillar-body h4 { font-family: var(--font-display); font-size: 1.05rem; color: var(--navy); margin-bottom: 3px; }
+.pillar-body p  { font-size: .86rem; color: var(--muted); }
+
+/* ══════════════════════════════════════════════════════════════
+   ACTIVITIES
+══════════════════════════════════════════════════════════════ */
+#activities {
+  padding: 96px 0;
+  background: linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 100%);
+  color: var(--white);
+  position: relative; overflow: hidden;
+}
+#activities::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(circle at 80% 20%, rgba(200,153,42,.07) 0%, transparent 60%);
+}
+
+#activities .section-title { color: var(--white); }
+#activities .section-sub   { color: rgba(255,255,255,.5); }
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.activity-card {
+  padding: 28px 22px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(200,153,42,.2);
+  border-radius: var(--radius);
+  text-align: center;
+  transition: background var(--tr), transform var(--tr), border-color var(--tr);
+  cursor: default;
+}
+.activity-card:hover {
+  background: rgba(200,153,42,.1);
+  border-color: rgba(200,153,42,.5);
+  transform: translateY(-5px);
+}
+.activity-card i {
+  font-size: 1.6rem; color: var(--gold-lt); margin-bottom: 14px;
+  display: block;
+}
+.activity-card span { font-size: .88rem; font-weight: 600; color: rgba(255,255,255,.85); }
+
+/* ══════════════════════════════════════════════════════════════
+   STATS
+══════════════════════════════════════════════════════════════ */
+#stats { padding: 80px 0; background: var(--off-white); }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+
+.stat-card {
+  padding: 36px 28px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: box-shadow var(--tr), transform var(--tr);
+  position: relative; overflow: hidden;
+}
+.stat-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--teal-lt));
+  transform: scaleX(0);
+  transition: transform .4s ease;
+  transform-origin: left;
+}
+.stat-card:hover { box-shadow: var(--shadow-navy); transform: translateY(-5px); }
+.stat-card:hover::after { transform: scaleX(1); }
+
+.stat-card i { font-size: 1.6rem; color: var(--gold); margin-bottom: 14px; display: block; }
+.stat-value { font-family: var(--font-display); font-size: clamp(2rem,4vw,2.8rem); font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+.stat-desc  { font-size: .85rem; color: var(--muted); font-weight: 600; }
+
+/* ══════════════════════════════════════════════════════════════
+   PRODUCTS  — avec images & slogans
+══════════════════════════════════════════════════════════════ */
+#products { padding: 108px 0; background: var(--white); }
+
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; }
+
+.product-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: box-shadow var(--tr), transform var(--tr);
+}
+.product-card:hover { box-shadow: var(--shadow-navy); transform: translateY(-6px); }
+
+.product-header {
+  padding: 32px 28px 24px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+  color: var(--white);
+  position: relative;
+}
+.product-header::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(200,153,42,.15) 0%, transparent 70%);
+}
+.product-icon {
+  width: 56px; height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 18px;
+}
+.product-header h3 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 4px; }
+.product-header .product-sub { font-size: .82rem; opacity: .6; font-family: var(--font-body); }
+
+/* Image illustration inside card */
+.product-visual {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0e1e38, #1a2f50);
+  height: 190px;
+  display: flex; align-items: center; justify-content: center;
+}
+.product-visual img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .5s cubic-bezier(.4,0,.2,1);
+}
+.product-card:hover .product-visual img { transform: scale(1.05); }
+
+/* Overlay slogan */
+.product-slogan {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 20px 18px 14px;
+  background: linear-gradient(to top, rgba(10,22,40,.92) 0%, rgba(10,22,40,.5) 70%, transparent 100%);
+  color: var(--white);
+}
+.product-slogan strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gold-lt);
+  line-height: 1.2;
+  margin-bottom: 3px;
+}
+.product-slogan span {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: rgba(255,255,255,.7);
+  text-transform: uppercase;
+}
+
+.product-body { padding: 24px 28px; background: var(--white); }
+
+.product-features { display: flex; flex-direction: column; gap: 10px; }
+.feature-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: .88rem; color: var(--text); line-height: 1.5;
+}
+.feature-item i { color: var(--teal); margin-top: 3px; flex-shrink: 0; }
+
+.product-highlight {
+  margin-top: 20px; padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(200,153,42,.08), rgba(200,153,42,.04));
+  border: 1px solid rgba(200,153,42,.25);
+  border-radius: var(--radius);
+  font-size: .85rem; color: var(--gold-dk); font-weight: 700;
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PUB SHOWCASE — Section publicitaire innovante
+══════════════════════════════════════════════════════════════ */
+#pub-showcase {
+  padding: 100px 0;
+  background: linear-gradient(170deg, #060f1e 0%, #0d1f3a 50%, #091628 100%);
+  position: relative;
+  overflow: hidden;
+}
+#pub-showcase::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(circle at 15% 30%, rgba(200,153,42,.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 70%, rgba(0,149,122,.07) 0%, transparent 45%);
+}
+/* animated grain */
+#pub-showcase::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+  opacity: .4;
+  pointer-events: none;
+}
+
+.pub-heading {
+  text-align: center;
+  margin-bottom: 64px;
+  position: relative; z-index: 1;
+}
+.pub-heading .tag {
+  background: rgba(200,153,42,.1);
+  border-color: rgba(200,153,42,.35);
+  color: var(--gold-lt);
+  margin-bottom: 16px;
+}
+.pub-heading h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--white);
+  font-weight: 800;
+  line-height: 1.1;
+}
+.pub-heading h2 em { font-style: normal; color: var(--gold-lt); }
+.pub-heading p {
+  margin-top: 12px;
+  font-size: .95rem;
+  color: rgba(255,255,255,.45);
+  max-width: 480px;
+  margin-left: auto; margin-right: auto;
+}
+
+/* Grid layout for pub cards */
+.pub-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 20px;
+  position: relative; z-index: 1;
+}
+
+/* featured = spans full left column */
+.pub-card {
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  background: #0d1f3a;
+}
+.pub-card--featured {
+  grid-row: 1 / 3;
+}
+
+.pub-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .6s cubic-bezier(.4,0,.2,1), filter .4s ease;
+  filter: brightness(.88) saturate(1.1);
+}
+.pub-card:hover img {
+  transform: scale(1.04);
+  filter: brightness(1) saturate(1.2);
+}
+
+/* overlay */
+.pub-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgba(5,12,25,.92) 0%,
+    rgba(5,12,25,.55) 45%,
+    transparent 100%
+  );
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 28px 26px;
+  transition: background .4s ease;
+}
+.pub-card:hover .pub-overlay {
+  background: linear-gradient(to top,
+    rgba(5,12,25,.96) 0%,
+    rgba(5,12,25,.6) 50%,
+    rgba(5,12,25,.1) 100%
+  );
+}
+
+/* pill label */
+.pub-label {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px;
+  background: rgba(200,153,42,.2);
+  border: 1px solid rgba(200,153,42,.4);
+  border-radius: 100px;
+  font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gold-lt);
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.pub-overlay h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.pub-card--featured .pub-overlay h3 { font-size: 1.8rem; }
+
+.pub-overlay p {
+  font-size: .82rem;
+  color: rgba(255,255,255,.65);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  max-width: 360px;
+  transform: translateY(6px);
+  opacity: 0;
+  transition: opacity .35s ease .05s, transform .35s ease .05s;
+}
+.pub-card:hover .pub-overlay p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pub-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+  color: var(--navy);
+  font-family: var(--font-body); font-size: .8rem; font-weight: 700;
+  border-radius: 8px;
+  transform: translateY(6px);
+  opacity: 0;
+  transition: opacity .35s ease .1s, transform .35s ease .1s, box-shadow .2s;
+  width: fit-content;
+}
+.pub-card:hover .pub-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+.pub-cta:hover { box-shadow: 0 4px 18px rgba(200,153,42,.5); }
+
+/* card heights */
+.pub-card--featured { min-height: 540px; }
+.pub-card--small    { min-height: 255px; }
+
+/* ══════════════════════════════════════════════════════════════
+   SERVICES
+══════════════════════════════════════════════════════════════ */
+#services { padding: 108px 0; background: var(--off-white); }
+
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+
+.service-card {
+  padding: 34px 26px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  position: relative; overflow: hidden;
+  transition: box-shadow var(--tr), transform var(--tr);
+}
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--teal-lt));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .38s ease;
+}
+.service-card:hover { box-shadow: var(--shadow-navy); transform: translateY(-6px); }
+.service-card:hover::before { transform: scaleX(1); }
+
+.service-icon {
+  width: 52px; height: 52px; border-radius: var(--radius);
+  background: var(--off-white); color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; margin-bottom: 18px;
+  transition: background var(--tr), color var(--tr);
+}
+.service-card:hover .service-icon { background: var(--navy); color: var(--gold-lt); }
+.service-card h3 { font-family: var(--font-display); font-size: 1.1rem; color: var(--navy); margin-bottom: 8px; }
+.service-card p  { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+
+/* ══════════════════════════════════════════════════════════════
+   PRESENCE
+══════════════════════════════════════════════════════════════ */
+#presence {
+  padding: 108px 0;
+  background: linear-gradient(160deg, var(--navy) 0%, #0E2040 100%);
+  color: var(--white); position: relative; overflow: hidden;
+}
+#presence::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 20% 80%, rgba(0,149,122,.1) 0%, transparent 50%);
+}
+
+#presence .section-title { color: var(--white); }
+#presence .section-sub   { color: rgba(255,255,255,.5); }
+
+.presence-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; position: relative; z-index: 1; }
+
+.presence-card {
+  padding: 26px 24px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-lg);
+  transition: background var(--tr), border-color var(--tr), transform var(--tr);
+}
+.presence-card:hover {
+  background: rgba(200,153,42,.1);
+  border-color: rgba(200,153,42,.4);
+  transform: translateY(-4px);
+}
+.presence-flag { font-size: 2rem; margin-bottom: 10px; }
+.presence-country { font-family: var(--font-display); font-size: 1.15rem; color: var(--white); margin-bottom: 4px; }
+.presence-partner {
+  font-size: .8rem; font-weight: 600; letter-spacing: .05em;
+  color: var(--gold-lt); margin-bottom: 6px;
+}
+.presence-role { font-size: .82rem; color: rgba(255,255,255,.5); }
+
+/* ══════════════════════════════════════════════════════════════
+   LEADERSHIP
+══════════════════════════════════════════════════════════════ */
+#leadership { padding: 108px 0; background: var(--white); }
+
+.leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+
+.leader-card {
+  padding: 40px 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: box-shadow var(--tr), transform var(--tr);
+  position: relative; overflow: hidden;
+}
+.leader-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--teal-lt));
+}
+.leader-card:hover { box-shadow: var(--shadow-navy); transform: translateY(-5px); }
+
+.leader-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--navy-lt));
+  color: var(--gold-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.7rem; margin-bottom: 22px;
+  border: 3px solid rgba(200,153,42,.25);
+}
+.leader-name { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); margin-bottom: 4px; }
+.leader-title { font-size: .8rem; font-weight: 700; color: var(--gold); letter-spacing: .07em; text-transform: uppercase; margin-bottom: 14px; }
+.leader-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+/* ══════════════════════════════════════════════════════════════
+   NEWS
+══════════════════════════════════════════════════════════════ */
+#news { padding: 108px 0; background: var(--off-white); }
+
+.news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; }
+
+.news-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: box-shadow var(--tr), transform var(--tr);
+}
+.news-card:hover { box-shadow: var(--shadow-navy); transform: translateY(-5px); }
+
+.news-card-top {
+  height: 6px;
+  background: linear-gradient(90deg, var(--gold), var(--teal-lt));
+}
+.news-card-body { padding: 28px 26px; }
+
+.news-icon-wrap {
+  width: 44px; height: 44px; border-radius: var(--radius);
+  background: var(--off-white); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; margin-bottom: 16px;
+}
+.news-card h3 { font-family: var(--font-display); font-size: 1.05rem; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
+.news-card p  { font-size: .88rem; color: var(--muted); margin-bottom: 18px; line-height: 1.6; }
+.news-card time { font-size: .78rem; font-weight: 700; color: var(--teal); letter-spacing: .04em; }
+
+/* ══════════════════════════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════════════════════════ */
+#contact {
+  padding: 108px 0;
+  background: linear-gradient(150deg, #EFF3FB 0%, #F7F5F0 100%);
+}
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: start; }
+
+.contact-info-title { font-family: var(--font-display); font-size: 1.6rem; color: var(--navy); margin-bottom: 10px; }
+.contact-info-sub   { font-size: .92rem; color: var(--muted); margin-bottom: 32px; line-height: 1.7; }
+
+.contact-detail {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 18px; font-size: .88rem; color: var(--text);
+}
+.contact-detail-icon {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--navy); color: var(--gold-lt);
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; flex-shrink: 0;
+}
+.contact-detail-text strong { display: block; font-size: .78rem; font-weight: 700; color: var(--gold-dk); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 2px; }
+
+.contact-form {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 44px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(10,22,40,.06);
+}
+
+.form-group { margin-bottom: 22px; }
+.form-group label { display: block; font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--text); margin-bottom: 7px; }
+
+.form-group select,
+.form-group input,
+.form-group textarea {
+  width: 100%; padding: 13px 15px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius); appearance: none;
+  font-family: var(--font-body); font-size: .93rem; color: var(--text);
+  background: var(--white);
+  transition: border-color var(--tr), box-shadow var(--tr);
+}
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(200,153,42,.14); }
+
+.form-group textarea { resize: vertical; min-height: 130px; }
+
+.form-submit {
+  width: 100%; padding: 15px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-lt));
+  color: var(--white); border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-body); font-size: .95rem; font-weight: 700;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: transform var(--tr), box-shadow var(--tr);
+}
+.form-submit:hover { transform: translateY(-2px); box-shadow: var(--shadow-navy); }
+
+/* ══════════════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════════════ */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(200,153,42,.2);
+  padding: 40px 28px;
+}
+.footer-inner {
+  max-width: 1140px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.footer-brand { display: flex; align-items: center; gap: 14px; }
+.footer-logo  { height: 36px; }
+.footer-name  { font-family: var(--font-display); font-size: 1rem; color: rgba(255,255,255,.8); }
+.footer-copy  { font-size: .8rem; color: rgba(255,255,255,.3); }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: .8rem; color: rgba(255,255,255,.35); transition: color var(--tr); }
+.footer-links a:hover { color: var(--gold-lt); }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+  .pub-grid { grid-template-columns: 1fr; }
+  .pub-card--featured { grid-row: auto; min-height: 420px; }
+  .pub-card--small    { min-height: 280px; }
+  /* show hover content on mobile */
+  .pub-overlay p, .pub-cta { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  #hero { padding: 70px 20px; text-align: center; }
+  .hero-content { max-width: 100%; }
+  .hero-actions { justify-content: center; }
+  .hero-eyebrow { justify-content: center; }
+  .contact-form { padding: 28px 22px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RTL
+══════════════════════════════════════════════════════════════ */
+[dir="rtl"] .pillar { border-left: none; border-right: 3px solid var(--gold); }
+[dir="rtl"] .pillar:hover { transform: translateX(-5px); }
+[dir="rtl"] .service-card::before, [dir="rtl"] .stat-card::after { transform-origin: right; }
+
+/* ══════════════════════════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { opacity: 0; }
+.reveal.visible { animation: fadeUp .65s cubic-bezier(.4,0,.2,1) forwards; }
+.reveal:nth-child(2) { animation-delay: .1s; }
+.reveal:nth-child(3) { animation-delay: .2s; }
+.reveal:nth-child(4) { animation-delay: .3s; }
+.reveal:nth-child(5) { animation-delay: .4s; }
+.reveal:nth-child(6) { animation-delay: .5s; }
+.reveal:nth-child(7) { animation-delay: .6s; }
+.reveal:nth-child(8) { animation-delay: .7s; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════ NAVBAR ════════════════════════════════ -->
+<header>
+  <nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <div class="nav-inner">
+      <img src="assets/logo.png" alt="FICDES BANK" class="nav-logo">
+      <ul class="nav-links">
+        <li><a href="#about"      class="nav-about">À propos</a></li>
+        <li><a href="#activities" class="nav-activities">Activités</a></li>
+        <li><a href="#products"   class="nav-products">Produits</a></li>
+        <li><a href="#services"   class="nav-services">Services</a></li>
+        <li><a href="#presence"   class="nav-presence">Présence</a></li>
+        <li><a href="#stats"      class="nav-stats">Chiffres</a></li>
+        <li><a href="#news"       class="nav-news">Actualités</a></li>
+        <li><a href="#contact"    class="nav-contact">Contact</a></li>
+      </ul>
+      <div class="lang-wrap">
+        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+        <label for="lang-select" class="sr-only">Langue</label>
+        <select id="lang-select" aria-label="Sélecteur de langue">
+          <option value="FR">Français</option>
+          <option value="EN">English</option>
+          <option value="ES">Español</option>
+          <option value="TR">Türkçe</option>
+          <option value="DE">Deutsch</option>
+          <option value="AR">العربية</option>
+          <option value="ZH">中文</option>
+          <option value="RU">Русский</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ════════════════════ HERO ══════════════════════════════════ -->
+<section id="hero" aria-label="Bannière principale">
+  <div class="hero-bg"      aria-hidden="true"></div>
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="hero-accent"  aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-text">Finance Internationale · Panafricaine</span>
+      </div>
+      <h1>FICDES <span>INVESTMENT</span> GROUP</h1>
+      <h2>FICDES BANK S.A</h2>
+      <p class="hero-tagline">Fond d'investissement et de crédit pour le développement économique et social</p>
+      <p class="hero-values">Innovation • Transparence • Confiance</p>
+      <div class="hero-actions">
+        <a href="https://app.ficdesbank.net/pages/index_CPF1.html" class="btn-gold">
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+          <span class="hero-cta">Ouvrir un compte</span>
+        </a>
+        <a href="#products" class="btn-ghost">
+          <i class="fa-solid fa-credit-card" aria-hidden="true"></i>
+          <span class="hero-products-link">Nos produits</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Découvrir</span>
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ════════════════════ ABOUT ═════════════════════════════════ -->
+<section id="about" aria-labelledby="about-h">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="about-label"><i class="fa-solid fa-building-columns" aria-hidden="true"></i><span class="about-label-text">QUI SOMMES-NOUS ?</span></div>
+        <h2 id="about-h" class="section-title about-title">À propos de <em>FICDES</em></h2>
+        <div class="gold-line"></div>
+        <p class="about-text"><strong>FICDES INVESTMENT GROUP / FICDES BANK S.A</strong> est une institution financière panafricaine moderne, spécialisée dans la finance internationale, la banque en ligne, la digitalisation bancaire, le transfert d'argent international et les solutions de paiement innovantes.</p>
+        <p class="about-text">Fondée en 2020 à <strong>Istanbul (Turquie)</strong>, notre banque a établi son siège international à <strong>Clarksburg, aux États-Unis</strong>, symbole de sa vision mondiale.</p>
+        <p class="about-text">Engagée dans le financement de projets en Afrique, <strong>FICDES BANK S.A</strong> accompagne particuliers, fonctionnaires, PME et opérateurs économiques avec des solutions financières adaptées à leurs besoins.</p>
+        <p class="about-text"><strong>FICDES BANK S.A</strong> incarne la confiance, la performance et l'innovation, au service du développement durable et de l'inclusion financière sur le continent africain et au-delà.</p>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar reveal">
+          <div class="pillar-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></div>
+          <div class="pillar-body">
+            <h4>Finance Internationale</h4>
+            <p>Accès aux marchés financiers mondiaux et solutions bancaires de premier plan.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div class="pillar-body">
+            <h4>Banque Digitale</h4>
+            <p>Plateforme bancaire 100% digitale, accessible partout en Afrique et dans le monde.</p>
+          </div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
+          <div class="pillar-body">
+            <h4>Développement Durable</h4>
+            <p>Inclusion financière et soutien aux projets de développement sur le continent africain.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ ACTIVITIES ════════════════════════════ -->
+<section id="activities" aria-labelledby="act-h">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><span class="tag"><i class="fa-solid fa-briefcase" aria-hidden="true"></i> <span class="act-badge">Secteurs</span></span></div>
+      <h2 id="act-h" class="section-title act-title">Nos <em>activités</em></h2>
+      <p class="section-sub act-sub">Un groupe diversifié opérant dans les secteurs stratégiques de l'économie africaine et internationale.</p>
+    </div>
+    <div class="activities-grid">
+      <div class="activity-card reveal"><i class="fa-solid fa-ship" aria-hidden="true"></i><span class="act-commerce">Commerce International</span></div>
+      <div class="activity-card reveal"><i class="fa-solid fa-box-open" aria-hidden="true"></i><span class="act-import">Import / Export</span></div>
+      <div class="activity-card reveal"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span class="act-conseil">Conseil &amp; Investissement</span></div>
+      <div class="activity-card reveal"><i class="fa-solid fa-building" aria-hidden="true"></i><span class="act-immo">Immobilier</span></div>
+      <div class="activity-card reveal"><i class="fa-solid fa-industry" aria-hidden="true"></i><span class="act-machines">Machines Industrielles</span></div>
+      <div class="activity-card reveal"><i class="fa-solid fa-shirt" aria-hidden="true"></i><span class="act-textile">Textile</span></div>
+      <div class="activity-card reveal"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="act-energie">Énergie</span></div>
+      <div class="activity-card reveal"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span class="act-entreprise">Conseil en Entreprise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ STATS ═════════════════════════════════ -->
+<section id="stats" aria-labelledby="stats-h">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="stats-h" class="section-title stats-title">Chiffres <em>clés</em></h2>
+      <p class="section-sub stats-sub">Des résultats concrets qui témoignent de notre engagement.</p>
+    </div>
+    <div class="stats-grid">
+      <article class="stat-card reveal"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><p class="stat-value">+05%</p><p class="stat-desc">Croissance annuelle</p></article>
+      <article class="stat-card reveal"><i class="fa-solid fa-users" aria-hidden="true"></i><p class="stat-value">+15 000</p><p class="stat-desc">Clients satisfaits</p></article>
+      <article class="stat-card reveal"><i class="fa-solid fa-handshake" aria-hidden="true"></i><p class="stat-value">+120</p><p class="stat-desc">Partenaires stratégiques</p></article>
+      <article class="stat-card reveal"><i class="fa-solid fa-earth-africa" aria-hidden="true"></i><p class="stat-value">8</p><p class="stat-desc">Pays représentés</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PRODUCTS ══════════════════════════════ -->
+<section id="products" aria-labelledby="prod-h">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><span class="tag"><i class="fa-solid fa-credit-card" aria-hidden="true"></i> <span class="prod-badge">Produits phares</span></span></div>
+      <h2 id="prod-h" class="section-title prod-title">Nos <em>produits</em></h2>
+      <p class="section-sub prod-sub">Des solutions financières innovantes conçues pour accompagner votre vie et vos ambitions.</p>
+    </div>
+    <div class="products-grid">
+
+      <!-- CPF Card -->
+      <article class="product-card reveal">
+        <div class="product-header">
+          <div class="product-icon" aria-hidden="true"><i class="fa-solid fa-id-card"></i></div>
+          <h3>Carte CPF</h3>
+          <p class="product-sub">Carte Professionnelle Fonctionnaire</p>
+        </div>
+        <!-- Illustration CPF -->
+        <div class="product-visual">
+          <img src="assets/Carte CPF-1.png" alt="Carte Professionnelle Fonctionnaire FICDES" loading="lazy">
+          <div class="product-slogan">
+            <strong>Votre salaire, votre pouvoir</strong>
+            <span>Financement dédié aux agents de l'État</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-features">
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Carte bancaire dédiée aux fonctionnaires africains</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Crédit basé sur le salaire mensuel</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Financement : maison, voiture, études</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Soutien aux projets personnels</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Procédure simplifiée &amp; rapide</span></div>
+          </div>
+          <div class="product-highlight">🎯 Conçue pour les agents de l'État en Afrique</div>
+        </div>
+      </article>
+
+      <!-- CASH FLOW -->
+      <article class="product-card reveal">
+        <div class="product-header">
+          <div class="product-icon" aria-hidden="true"><i class="fa-solid fa-money-bill-transfer"></i></div>
+          <h3>CASH FLOW</h3>
+          <p class="product-sub">Transfert International d'Argent</p>
+        </div>
+        <!-- Illustration CASH FLOW -->
+        <div class="product-visual">
+          <img src="assets/CASH FLOW-1.png" alt="Transfert International d'Argent FICDES CASH FLOW" loading="lazy">
+          <div class="product-slogan">
+            <strong>L'argent voyage, vite et sûr</strong>
+            <span>Transferts vers toute l'Afrique et au-delà</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-features">
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Transferts internationaux sécurisés</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Frais compétitifs : entre 4% et 6%</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Disponible vers toute l'Afrique et au-delà</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Traitement rapide des transactions</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Suivi en temps réel de vos transferts</span></div>
+          </div>
+          <div class="product-highlight">💸 Frais entre 4% et 6% par transfert</div>
+        </div>
+      </article>
+
+      <!-- VISA Pro -->
+      <article class="product-card reveal">
+        <div class="product-header">
+          <div class="product-icon" aria-hidden="true"><i class="fa-brands fa-cc-visa"></i></div>
+          <h3>Carte VISA Pro</h3>
+          <p class="product-sub">Pour Opérateurs Économiques</p>
+        </div>
+        <!-- Illustration VISA Pro -->
+        <div class="product-visual">
+          <img src="assets/Carte VISA Pro-1.png" alt="Carte VISA Professionnelle FICDES pour Opérateurs Économiques" loading="lazy">
+          <div class="product-slogan">
+            <strong>Le monde comme terrain de jeu</strong>
+            <span>Jusqu'à 100 millions FCFA de limite</span>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-features">
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Carte VISA professionnelle internationale</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Limite jusqu'à 50 à 100 millions FCFA</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Idéale pour le commerce international</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Import / Export facilité</span></div>
+            <div class="feature-item"><i class="fa-solid fa-check-circle" aria-hidden="true"></i><span>Accès aux marchés financiers mondiaux</span></div>
+          </div>
+          <div class="product-highlight">💳 Limite jusqu'à 100 millions FCFA</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PUB SHOWCASE ══════════════════════════ -->
+<section id="pub-showcase" aria-labelledby="pub-h">
+  <div class="container">
+    <div class="pub-heading">
+      <div class="section-badge">
+        <span class="tag" style="background:rgba(200,153,42,.1);border-color:rgba(200,153,42,.35);color:var(--gold-lt)">
+          <i class="fa-solid fa-star" aria-hidden="true"></i> Offres exclusives
+        </span>
+      </div>
+      <h2 id="pub-h">Votre <em>succès</em>, nos solutions</h2>
+      <p>Découvrez en détail nos produits phares et comment ils transforment vos ambitions financières en réalité.</p>
+    </div>
+
+    <div class="pub-grid">
+
+      <!-- Featured : CASH FLOW pub -->
+      <div class="pub-card pub-card--featured reveal">
+        <img src="assets/pub-CASH FLOW-2.png" alt="Publication FICDES CASH FLOW – Transfert International" loading="lazy">
+        <div class="pub-overlay">
+          <div class="pub-label"><i class="fa-solid fa-bolt"></i> CASH FLOW</div>
+          <h3>Envoyez de l'argent partout en Afrique en quelques clics</h3>
+          <p>Rapide, sécurisé, compétitif. Avec FICDES CASH FLOW, chaque transfert est une promesse tenue — à vos proches, à vos partenaires, à votre avenir.</p>
+          <a href="https://app.ficdesbank.net/pages/index_CPF1.html" class="pub-cta">
+            <i class="fa-solid fa-arrow-right"></i> Transférer maintenant
+          </a>
+        </div>
+      </div>
+
+      <!-- Small card 1 : VISA Pro pub-2 -->
+      <div class="pub-card pub-card--small reveal">
+        <img src="assets/pub-Carte VISA Pro-2.png" alt="Publication Carte VISA Pro FICDES – Opérateurs Économiques" loading="lazy">
+        <div class="pub-overlay">
+          <div class="pub-label"><i class="fa-brands fa-cc-visa"></i> VISA Pro</div>
+          <h3>La carte qui ouvre les frontières du business</h3>
+          <p>Commerce international sans limites. Jusqu'à 100 millions FCFA à portée de main.</p>
+          <a href="https://app.ficdesbank.net/pages/index_CPF1.html" class="pub-cta">
+            <i class="fa-solid fa-arrow-right"></i> Demander ma carte
+          </a>
+        </div>
+      </div>
+
+      <!-- Small card 2 : VISA Pro pub-3 -->
+      <div class="pub-card pub-card--small reveal">
+        <img src="assets/pub-Carte VISA Pro-3.png" alt="Publication Carte VISA Pro FICDES – Avantages exclusifs" loading="lazy">
+        <div class="pub-overlay">
+          <div class="pub-label"><i class="fa-solid fa-globe"></i> Accès Mondial</div>
+          <h3>Opérez à l'international avec une carte pensée pour l'Afrique</h3>
+          <p>FICDES VISA Pro — l'outil financier des grands opérateurs économiques africains.</p>
+          <a href="https://app.ficdesbank.net/pages/index_CPF1.html" class="pub-cta">
+            <i class="fa-solid fa-arrow-right"></i> En savoir plus
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SERVICES ══════════════════════════════ -->
+<section id="services" aria-labelledby="svc-h">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><span class="tag"><i class="fa-solid fa-gears" aria-hidden="true"></i> <span class="svc-badge">Solutions bancaires</span></span></div>
+      <h2 id="svc-h" class="section-title services-title">Nos <em>services</em></h2>
+      <p class="section-sub services-sub">Des services financiers complets pour chaque étape de votre parcours.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-piggy-bank"></i></div>
+        <h3 class="service-title-1">Comptes Bancaires</h3>
+        <p class="service-desc-1">Solutions sécurisées pour particuliers et entreprises, avec accès digital 24h/24.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+        <h3 class="service-title-2">Prêts et Crédit</h3>
+        <p class="service-desc-2">Financements adaptés à vos projets personnels, immobiliers et professionnels.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-chart-pie"></i></div>
+        <h3 class="service-title-3">Investissements</h3>
+        <p class="service-desc-3">Opportunités diversifiées : immobilier, énergie, textile, machines industrielles.</p>
+      </article>
+      <article class="service-card reveal">
+        <div class="service-icon" aria-hidden="true"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3 class="service-title-4">Banque Digitale</h3>
+        <p class="service-desc-4">Plateforme bancaire en ligne complète, accessible depuis partout dans le monde.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ PRESENCE ══════════════════════════════ -->
+<section id="presence" aria-labelledby="pres-h">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><span class="tag" style="background:rgba(0,149,122,.14);border-color:rgba(0,149,122,.35);color:var(--teal-lt)"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> <span class="pres-badge">Réseau africain</span></span></div>
+      <h2 id="pres-h" class="section-title pres-title" style="color:var(--white)">Notre <em>présence</em> en Afrique</h2>
+      <p class="section-sub pres-sub">8 pays représentés, un réseau de partenaires solides pour vous accompagner partout.</p>
+    </div>
+    <div class="presence-grid">
+      <div class="presence-card reveal"><div class="presence-flag">🇹🇬</div><p class="presence-country">Togo</p><p class="presence-partner">FICDES BANK SA</p><p class="presence-role">Représentation officielle</p></div>
+      <div class="presence-card reveal"><div class="presence-flag">🇨🇮</div><p class="presence-country">Côte d'Ivoire</p><p class="presence-partner">MKS GROUP</p><p class="presence-role">Partenaire agréé</p></div>
+      <div class="presence-card reveal"><div class="presence-flag">🇧🇯</div><p class="presence-country">Bénin</p><p class="presence-partner">CADRECO</p><p class="presence-role">Partenaire agréé</p></div>
+      <div class="presence-card reveal"><div class="presence-flag">🇬🇭</div><p class="presence-country">Ghana</p><p class="presence-partner">GNACOFA</p><p class="presence-role">Partenaire agréé</p></div>
+      <div class="presence-card reveal"><div class="presence-flag">🇨🇲</div><p class="presence-country">Cameroun</p><p class="presence-partner">En développement</p><p class="presence-role">Représentation régionale</p></div>
+      <div class="presence-card reveal"><div class="presence-flag">🇸🇳</div><p class="presence-country">Sénégal</p><p class="presence-partner">En développement</p><p class="presence-role">Représentation régionale</p></div>
+      <div class="presence-card reveal"><div class="presence-flag">🇲🇦</div><p class="presence-country">Maroc</p><p class="presence-partner">En développement</p><p class="presence-role">Représentation régionale</p></div>
+      <div class="presence-card reveal"><div class="presence-flag">🇨🇩</div><p class="presence-country">RDC</p><p class="presence-partner">En développement</p><p class="presence-role">Représentation régionale</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ LEADERSHIP ════════════════════════════ -->
+<section id="leadership" aria-labelledby="lead-h">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><span class="tag"><i class="fa-solid fa-users-gear" aria-hidden="true"></i> <span class="lead-badge">Direction</span></span></div>
+      <h2 id="lead-h" class="section-title lead-title">Notre <em>équipe dirigeante</em></h2>
+      <p class="section-sub lead-sub">Des leaders visionnaires engagés pour le développement financier de l'Afrique.</p>
+    </div>
+    <div class="leadership-grid">
+      <article class="leader-card reveal">
+        <div class="leader-avatar" aria-hidden="true"><i class="fa-solid fa-user-tie"></i></div>
+        <h3 class="leader-name">Maxwell Kodjo Agbavon Dagba</h3>
+        <p class="leader-title">Cofondateur & Dirigeant FICDES Afrique</p>
+        <p class="leader-desc">Cofondateur et dirigeant de FICDES BANK en Afrique. Architecte de la stratégie d'expansion panafricaine du groupe, il pilote le développement des représentations dans la zone CEDEAO et au-delà.</p>
+      </article>
+      <article class="leader-card reveal">
+        <div class="leader-avatar" aria-hidden="true"><i class="fa-solid fa-microchip"></i></div>
+        <h3 class="leader-name">Haluk Yetkin</h3>
+        <p class="leader-title">PDG – KAF Technology · Partenaire Financier</p>
+        <p class="leader-desc">PDG de KAF Technology et partenaire financier stratégique de FICDES. Il apporte l'expertise technologique qui permet à FICDES de développer ses solutions bancaires digitales innovantes.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ NEWS ══════════════════════════════════ -->
+<section id="news" aria-labelledby="news-h">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge"><span class="tag"><i class="fa-solid fa-newspaper" aria-hidden="true"></i> <span class="news-badge">Communiqués</span></span></div>
+      <h2 id="news-h" class="section-title news-section-title">Dernières <em>actualités</em></h2>
+      <p class="section-sub news-section-sub">Les annonces officielles et actualités de FICDES INVESTMENT GROUP.</p>
+    </div>
+    <div class="news-grid">
+      <article class="news-card reveal">
+        <div class="news-card-top"></div>
+        <div class="news-card-body">
+          <div class="news-icon-wrap" aria-hidden="true"><i class="fa-solid fa-bullhorn"></i></div>
+          <h3><span class="news-title-1">Lancement de la Banque Digitale</span></h3>
+          <p class="news-desc-1">FICDES INVESTMENT GROUP annonce le lancement officiel de sa plateforme bancaire digitale, accessible à tous les clients africains.</p>
+          <time class="news-date news-date-1" datetime="2025-09-15">Publié le 15 septembre 2025</time>
+        </div>
+      </article>
+      <article class="news-card reveal">
+        <div class="news-card-top"></div>
+        <div class="news-card-body">
+          <div class="news-icon-wrap" aria-hidden="true"><i class="fa-solid fa-building-columns"></i></div>
+          <h3><span class="news-title-2">Nouvelle Agence à Lomé</span></h3>
+          <p class="news-desc-2">Une nouvelle agence FICDES BANK a ouvert ses portes à Lomé, Togo, renforçant notre présence en Afrique de l'Ouest.</p>
+          <time class="news-date news-date-2" datetime="2025-08-10">Publié le 10 août 2025</time>
+        </div>
+      </article>
+      <article class="news-card reveal">
+        <div class="news-card-top"></div>
+        <div class="news-card-body">
+          <div class="news-icon-wrap" aria-hidden="true"><i class="fa-solid fa-handshake"></i></div>
+          <h3><span class="news-title-3">Partenariat Stratégique</span></h3>
+          <p class="news-desc-3">Signature d'un partenariat pour soutenir les PME africaines et renforcer le financement de projets dans la zone CEDEAO.</p>
+          <time class="news-date news-date-3" datetime="2025-07-25">Publié le 25 juillet 2025</time>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ CONTACT ═══════════════════════════════ -->
+<section id="contact" aria-labelledby="contact-h">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <h2 id="contact-h" class="section-title contact-title">Contactez-<em>nous</em></h2>
+        <div class="gold-line"></div>
+        <p class="contact-info-sub contact-sub">Notre équipe est disponible pour répondre à toutes vos questions sur nos produits, services et opportunités d'investissement.</p>
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></div>
+          <div class="contact-detail-text">
+            <strong>Crédit &amp; Financement</strong>
+            gestion.credit@ficdesbank.net
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true"><i class="fa-solid fa-globe"></i></div>
+          <div class="contact-detail-text">
+            <strong>Diplomatie &amp; Consulat</strong>
+            diplomacie.consulat@ficdesbank.net
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="contact-detail-text">
+            <strong>Agence Togo</strong>
+            secretariat.agence-togo@ficdesbank.net
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-detail-icon" aria-hidden="true"><i class="fa-solid fa-building"></i></div>
+          <div class="contact-detail-text">
+            <strong>Siège international</strong>
+            Clarksburg, Maryland – États-Unis
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form action="https://formspree.io/f/mnngpokp" method="POST" novalidate>
+          <div class="form-group">
+            <label for="contact-to" class="form-label-to">À :</label>
+            <select id="contact-to" name="to" required>
+              <option value="" disabled selected class="form-to-placeholder">Choisir un destinataire</option>
+              <option value="gestion.credit@ficdesbank.net">Crédit – gestion.credit@ficdesbank.net</option>
+              <option value="diplomacie.consulat@ficdesbank.net">Diplomatie – diplomacie.consulat@ficdesbank.net</option>
+              <option value="secretariat.agence-togo@ficdesbank.net">Agence Togo – secretariat.agence-togo@ficdesbank.net</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="contact-name" class="form-label-name">Nom complet</label>
+            <input type="text" id="contact-name" name="name" placeholder="Votre nom" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="contact-email" class="form-label-email">Email</label>
+            <input type="email" id="contact-email" name="email" placeholder="Votre adresse email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="contact-message" class="form-label-message">Message</label>
+            <textarea id="contact-message" name="message" rows="5" placeholder="Décrivez votre besoin ou votre question..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            <span class="form-submit-text">Envoyer le message</span>
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ FOOTER ════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="FICDES" class="footer-logo">
+      <span class="footer-name">FICDES INVESTMENT GROUP</span>
+    </div>
+    <p class="footer-copy">&copy; 2025 FICDES INVESTMENT GROUP – Tous droits réservés</p>
+    <nav class="footer-links" aria-label="Liens footer">
+      <a href="#about">À propos</a>
+      <a href="#products">Produits</a>
+      <a href="#presence">Présence</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ════════════════════ SCRIPTS ═══════════════════════════════ -->
+<script>
+'use strict';
+
+const T = {
+  FR: {
+    dir: 'ltr',
+    nav: ['À propos','Activités','Produits','Services','Présence','Chiffres','Actualités','Contact'],
+    heroEyebrow: 'Finance Internationale · Panafricaine',
+    heroValues: 'Innovation • Transparence • Confiance',
+    heroCta: 'Ouvrir un compte',
+    heroProducts: 'Nos produits',
+    aboutLabel: 'QUI SOMMES-NOUS ?',
+    aboutTitle: 'À propos de FICDES',
+    aboutTexts: [
+      'FICDES INVESTMENT GROUP / FICDES BANK S.A est une institution financière panafricaine moderne, spécialisée dans la finance internationale, la banque en ligne, la digitalisation bancaire, le transfert d\'argent international et les solutions de paiement innovantes.',
+      'Fondée en 2020 à Istanbul (Turquie), notre banque a établi son siège international à Clarksburg, aux États-Unis, symbole de sa vision mondiale.',
+      'Engagée dans le financement de projets en Afrique, FICDES BANK S.A accompagne particuliers, fonctionnaires, PME et opérateurs économiques.',
+      'FICDES BANK S.A incarne la confiance, la performance et l\'innovation, au service du développement durable et de l\'inclusion financière.'
+    ],
+    actBadge: 'Secteurs', actTitle: 'Nos activités',
+    actSub: 'Un groupe diversifié opérant dans les secteurs stratégiques de l\'économie africaine et internationale.',
+    activities: ['Commerce International','Import / Export','Conseil & Investissement','Immobilier','Machines Industrielles','Textile','Énergie','Conseil en Entreprise'],
+    statsTitle: 'Chiffres clés', statsSub: 'Des résultats concrets qui témoignent de notre engagement.',
+    statsValues: ['+05%','+15 000','+120','8'],
+    statsDesc: ['Croissance annuelle','Clients satisfaits','Partenaires stratégiques','Pays représentés'],
+    prodBadge: 'Produits phares', prodTitle: 'Nos produits',
+    prodSub: 'Des solutions financières innovantes conçues pour accompagner votre vie et vos ambitions.',
+    svcBadge: 'Solutions bancaires', servicesTitle: 'Nos services',
+    servicesSub: 'Des services financiers complets pour chaque étape de votre parcours.',
+    services: [
+      {title:'Comptes Bancaires', desc:'Solutions sécurisées pour particuliers et entreprises, avec accès digital 24h/24.'},
+      {title:'Prêts et Crédit',   desc:'Financements adaptés à vos projets personnels, immobiliers et professionnels.'},
+      {title:'Investissements',   desc:'Opportunités diversifiées : immobilier, énergie, textile, machines industrielles.'},
+      {title:'Banque Digitale',   desc:'Plateforme bancaire en ligne complète, accessible depuis partout dans le monde.'}
+    ],
+    presBadge: 'Réseau africain', presTitle: 'Notre présence en Afrique',
+    presSub: '8 pays représentés, un réseau de partenaires solides pour vous accompagner partout.',
+    leadBadge: 'Direction', leadTitle: 'Notre équipe dirigeante',
+    leadSub: 'Des leaders visionnaires engagés pour le développement financier de l\'Afrique.',
+    newsBadge: 'Communiqués', newsTitle: 'Dernières actualités',
+    newsSub: 'Les annonces officielles et actualités de FICDES INVESTMENT GROUP.',
+    news: [
+      {title:'Lancement de la Banque Digitale', desc:'FICDES INVESTMENT GROUP annonce le lancement officiel de sa plateforme bancaire digitale, accessible à tous les clients africains.', date:'Publié le 15 septembre 2025'},
+      {title:'Nouvelle Agence à Lomé',           desc:'Une nouvelle agence FICDES BANK a ouvert ses portes à Lomé, Togo, renforçant notre présence en Afrique de l\'Ouest.',              date:'Publié le 10 août 2025'},
+      {title:'Partenariat Stratégique',          desc:'Signature d\'un partenariat pour soutenir les PME africaines et renforcer le financement de projets dans la zone CEDEAO.',        date:'Publié le 25 juillet 2025'}
+    ],
+    contactTitle: 'Contactez-nous', contactSub: 'Notre équipe est disponible pour répondre à toutes vos questions sur nos produits, services et opportunités.',
+    formLabels: {to:'À :',name:'Nom complet',email:'Email',message:'Message'},
+    formPH: {to:'Choisir un destinataire',name:'Votre nom',email:'Votre adresse email',message:'Décrivez votre besoin...'},
+    sendBtn: 'Envoyer le message'
+  },
+  EN: {
+    dir: 'ltr',
+    nav: ['About','Activities','Products','Services','Presence','Figures','News','Contact'],
+    heroEyebrow: 'International Finance · Pan-African',
+    heroValues: 'Innovation • Transparency • Trust',
+    heroCta: 'Open an account',
+    heroProducts: 'Our products',
+    aboutLabel: 'WHO ARE WE?',
+    aboutTitle: 'About FICDES',
+    aboutTexts: [
+      'FICDES INVESTMENT GROUP / FICDES BANK S.A is a modern Pan-African financial institution specializing in international finance, online banking, digital banking, international money transfers, and innovative payment solutions.',
+      'Founded in 2020 in Istanbul (Turkey), our bank established its international headquarters in Clarksburg, USA.',
+      'Committed to project financing in Africa, FICDES BANK S.A supports individuals, civil servants, SMEs, and economic operators.',
+      'FICDES BANK S.A embodies trust, performance, and innovation, serving sustainable development and financial inclusion.'
+    ],
+    actBadge: 'Sectors', actTitle: 'Our activities',
+    actSub: 'A diversified group operating in the strategic sectors of the African and international economy.',
+    activities: ['International Trade','Import / Export','Advisory & Investment','Real Estate','Industrial Machinery','Textile','Energy','Business Consulting'],
+    statsTitle: 'Key Figures', statsSub: 'Concrete results that reflect our commitment.',
+    statsValues: ['+05%','+15 000','+120','8'],
+    statsDesc: ['Annual Growth','Satisfied Clients','Strategic Partners','Countries'],
+    prodBadge: 'Flagship Products', prodTitle: 'Our products',
+    prodSub: 'Innovative financial solutions designed to support your life and ambitions.',
+    svcBadge: 'Banking Solutions', servicesTitle: 'Our services',
+    servicesSub: 'Comprehensive financial services for every stage of your journey.',
+    services: [
+      {title:'Bank Accounts',   desc:'Secure solutions for individuals and businesses, with 24/7 digital access.'},
+      {title:'Loans & Credit',  desc:'Financing tailored to your personal, real estate, and professional projects.'},
+      {title:'Investments',     desc:'Diversified opportunities: real estate, energy, textile, industrial machinery.'},
+      {title:'Digital Banking', desc:'Full online banking platform, accessible from anywhere in the world.'}
+    ],
+    presBadge: 'African Network', presTitle: 'Our presence in Africa',
+    presSub: '8 countries represented, a solid partner network to support you everywhere.',
+    leadBadge: 'Leadership', leadTitle: 'Our leadership team',
+    leadSub: 'Visionary leaders committed to Africa\'s financial development.',
+    newsBadge: 'Press Releases', newsTitle: 'Latest news',
+    newsSub: 'Official announcements and news from FICDES INVESTMENT GROUP.',
+    news: [
+      {title:'Digital Banking Launch',  desc:'FICDES INVESTMENT GROUP officially announces the launch of its digital banking platform, accessible to all African clients.',            date:'Published September 15, 2025'},
+      {title:'New Branch in Lomé',      desc:'A new FICDES BANK branch opened in Lomé, Togo, strengthening our presence in West Africa.',                                          date:'Published August 10, 2025'},
+      {title:'Strategic Partnership',   desc:'Signing of a partnership to support African SMEs and strengthen project financing in the ECOWAS zone.',                              date:'Published July 25, 2025'}
+    ],
+    contactTitle: 'Contact us', contactSub: 'Our team is available to answer all your questions about our products, services, and opportunities.',
+    formLabels: {to:'To:',name:'Full Name',email:'Email',message:'Message'},
+    formPH: {to:'Choose a recipient',name:'Your name',email:'Your email address',message:'Describe your need...'},
+    sendBtn: 'Send message'
+  },
+  ES: {
+    dir: 'ltr',
+    nav: ['Acerca de','Actividades','Productos','Servicios','Presencia','Cifras','Noticias','Contacto'],
+    heroEyebrow: 'Finanzas Internacionales · Panafricano',heroValues: 'Innovación • Transparencia • Confianza',heroCta: 'Abrir una cuenta',heroProducts: 'Nuestros productos',aboutLabel: '¿QUIÉNES SOMOS?',aboutTitle: 'Acerca de FICDES',
+    aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A es una institución financiera panafricana moderna, especializada en finanzas internacionales, banca en línea, digitalización bancaria y transferencias internacionales de dinero.','Fundada en 2020 en Estambul (Turquía), el banco estableció su sede internacional en Clarksburg, EE. UU.','FICDES BANK S.A apoya a particulares, funcionarios, PYME y operadores económicos con financiación de proyectos en África.','FICDES BANK S.A encarna confianza, rendimiento e innovación al servicio del desarrollo sostenible.'],
+    actBadge: 'Sectores',actTitle: 'Nuestras actividades',actSub: 'Un grupo diversificado operando en los sectores estratégicos de la economía africana e internacional.',activities: ['Comercio Internacional','Importación / Exportación','Asesoría e Inversión','Bienes Raíces','Maquinaria Industrial','Textil','Energía','Consultoría Empresarial'],statsTitle: 'Cifras clave',statsSub: 'Resultados concretos que reflejan nuestro compromiso.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Crecimiento anual','Clientes satisfechos','Socios estratégicos','Países'],prodBadge: 'Productos destacados',prodTitle: 'Nuestros productos',prodSub: 'Soluciones financieras innovadoras diseñadas para acompañar su vida y ambiciones.',svcBadge: 'Soluciones bancarias',servicesTitle: 'Nuestros servicios',servicesSub: 'Servicios financieros completos para cada etapa de su trayectoria.',
+    services: [{title:'Cuentas Bancarias',desc:'Soluciones seguras para particulares y empresas, con acceso digital 24h.'},{title:'Préstamos y Crédito',desc:'Financiación adaptada a sus proyectos personales, inmobiliarios y profesionales.'},{title:'Inversiones',desc:'Oportunidades diversificadas: inmobiliario, energía, textil, maquinaria.'},{title:'Banca Digital',desc:'Plataforma bancaria en línea completa, accesible desde cualquier lugar.'}],
+    presBadge: 'Red africana',presTitle: 'Nuestra presencia en África',presSub: '8 países representados, una sólida red de socios para acompañarle en todas partes.',leadBadge: 'Dirección',leadTitle: 'Nuestro equipo directivo',leadSub: 'Líderes visionarios comprometidos con el desarrollo financiero de África.',newsBadge: 'Comunicados',newsTitle: 'Últimas noticias',newsSub: 'Anuncios oficiales y noticias de FICDES INVESTMENT GROUP.',
+    news: [{title:'Lanzamiento de la Banca Digital',desc:'FICDES anuncia el lanzamiento oficial de su plataforma bancaria digital.',date:'Publicado el 15 de septiembre de 2025'},{title:'Nueva Sucursal en Lomé',desc:'Una nueva sucursal de FICDES BANK abrió sus puertas en Lomé, Togo.',date:'Publicado el 10 de agosto de 2025'},{title:'Asociación Estratégica',desc:'Firma de una asociación para apoyar a las PYME africanas.',date:'Publicado el 25 de julio de 2025'}],
+    contactTitle: 'Contáctenos',contactSub: 'Nuestro equipo está disponible para responder todas sus preguntas.',formLabels: {to:'A:',name:'Nombre completo',email:'Email',message:'Mensaje'},formPH: {to:'Elegir destinatario',name:'Su nombre',email:'Su correo',message:'Describa su necesidad...'},sendBtn: 'Enviar mensaje'
+  },
+  TR: {
+    dir: 'ltr',
+    nav: ['Hakkında','Faaliyetler','Ürünler','Hizmetler','Varlık','Rakamlar','Haberler','İletişim'],
+    heroEyebrow: 'Uluslararası Finans · Panafrikan',heroValues: 'İnovasyon • Şeffaflık • Güven',heroCta: 'Hesap aç',heroProducts: 'Ürünlerimiz',aboutLabel: 'BİZ KİMİZ?',aboutTitle: 'FICDES Hakkında',
+    aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A, uluslararası finans, çevrimiçi bankacılık ve uluslararası para transferi konularında uzmanlaşmış modern bir Pan-Afrika finans kuruluşudur.','2020 yılında İstanbul\'da kurulan banka, uluslararası merkezini ABD\'de Clarksburg\'da kurmuştur.','FICDES BANK S.A, bireyler, memurlar, KOBİ\'ler ve ekonomik operatörlere Afrika\'da proje finansmanı sağlar.','FICDES BANK S.A, güven, performans ve inovasyonu temsil etmektedir.'],
+    actBadge: 'Sektörler',actTitle: 'Faaliyetlerimiz',actSub: 'Afrika ve uluslararası ekonominin stratejik sektörlerinde faaliyet gösteren çeşitlendirilmiş bir grup.',activities: ['Uluslararası Ticaret','İthalat / İhracat','Danışmanlık & Yatırım','Gayrimenkul','Endüstriyel Makineler','Tekstil','Enerji','İşletme Danışmanlığı'],statsTitle: 'Ana Rakamlar',statsSub: 'Taahhüdümüzü yansıtan somut sonuçlar.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Yıllık Büyüme','Memnun Müşteriler','Stratejik Ortaklar','Temsil Edilen Ülkeler'],prodBadge: 'Öne Çıkan Ürünler',prodTitle: 'Ürünlerimiz',prodSub: 'Hayatınıza ve hedeflerinize destek olmak için tasarlanmış yenilikçi finansal çözümler.',svcBadge: 'Bankacılık Çözümleri',servicesTitle: 'Hizmetlerimiz',servicesSub: 'Her aşama için kapsamlı finansal hizmetler.',
+    services: [{title:'Banka Hesapları',desc:'Bireyler ve işletmeler için 7/24 dijital erişimli güvenli çözümler.'},{title:'Krediler',desc:'Kişisel, gayrimenkul ve profesyonel projelerinize uygun finansman.'},{title:'Yatırımlar',desc:'Gayrimenkul, enerji, tekstil ve endüstriyel makinelerde çeşitlendirilmiş fırsatlar.'},{title:'Dijital Bankacılık',desc:'Dünyanın her yerinden erişilebilen tam çevrimiçi bankacılık platformu.'}],
+    presBadge: 'Afrika Ağı',presTitle: 'Afrika\'daki varlığımız',presSub: '8 ülkede temsil, her yerde sizi destekleyen sağlam ortaklar ağı.',leadBadge: 'Liderlik',leadTitle: 'Yönetim ekibimiz',leadSub: 'Afrika\'nın finansal kalkınmasına adanmış vizyoner liderler.',newsBadge: 'Basın Bültenleri',newsTitle: 'Son haberler',newsSub: 'FICDES INVESTMENT GROUP\'tan resmi duyurular ve haberler.',
+    news: [{title:'Dijital Bankacılık Lansmanı',desc:'FICDES dijital bankacılık platformunun resmi lansmanını duyuruyor.',date:'15 Eylül 2025\'te yayınlandı'},{title:'Lomé\'de Yeni Şube',desc:'Yeni bir FICDES BANK şubesi Togo, Lomé\'de açıldı.',date:'10 Ağustos 2025\'te yayınlandı'},{title:'Stratejik Ortaklık',desc:'Afrikalı KOBİ\'leri desteklemek için ortaklık imzalandı.',date:'25 Temmuz 2025\'te yayınlandı'}],
+    contactTitle: 'İletişim',contactSub: 'Ekibimiz tüm sorularınızı yanıtlamaya hazır.',formLabels: {to:'Kime:',name:'Tam ad',email:'E-posta',message:'Mesaj'},formPH: {to:'Alıcı seçin',name:'Adınız',email:'E-posta adresiniz',message:'İhtiyacınızı açıklayın...'},sendBtn: 'Mesaj gönder'
+  },
+  DE: {
+    dir: 'ltr',
+    nav: ['Über uns','Aktivitäten','Produkte','Dienstleistungen','Präsenz','Zahlen','Neuigkeiten','Kontakt'],
+    heroEyebrow: 'Internationale Finanzen · Panafrikanisch',heroValues: 'Innovation • Transparenz • Vertrauen',heroCta: 'Konto eröffnen',heroProducts: 'Unsere Produkte',aboutLabel: 'WER SIND WIR?',aboutTitle: 'Über FICDES',
+    aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A ist eine moderne panafrikanische Finanzinstitution, spezialisiert auf internationale Finanzen, Online-Banking und internationale Geldüberweisungen.','Gegründet 2020 in Istanbul, hat die Bank ihren internationalen Hauptsitz in Clarksburg, USA.','FICDES BANK S.A unterstützt Privatpersonen, Beamte, KMU und Wirtschaftsakteure mit Projektfinanzierung in Afrika.','FICDES BANK S.A verkörpert Vertrauen, Leistung und Innovation für nachhaltige Entwicklung.'],
+    actBadge: 'Sektoren',actTitle: 'Unsere Aktivitäten',actSub: 'Eine diversifizierte Gruppe in den strategischen Sektoren der afrikanischen und internationalen Wirtschaft.',activities: ['Internationaler Handel','Import / Export','Beratung & Investition','Immobilien','Industriemaschinen','Textil','Energie','Unternehmensberatung'],statsTitle: 'Kennzahlen',statsSub: 'Konkrete Ergebnisse, die unser Engagement widerspiegeln.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Jährliches Wachstum','Zufriedene Kunden','Strategische Partner','Vertretene Länder'],prodBadge: 'Hauptprodukte',prodTitle: 'Unsere Produkte',prodSub: 'Innovative Finanzlösungen für Ihr Leben und Ihre Ambitionen.',svcBadge: 'Banklösungen',servicesTitle: 'Unsere Dienstleistungen',servicesSub: 'Umfassende Finanzdienstleistungen für jede Phase Ihrer Reise.',
+    services: [{title:'Bankkonten',desc:'Sichere Lösungen für Privatpersonen und Unternehmen mit 24/7 digitalem Zugang.'},{title:'Kredite',desc:'Finanzierungen für Ihre persönlichen, Immobilien- und Berufsprojekte.'},{title:'Investitionen',desc:'Diversifizierte Möglichkeiten: Immobilien, Energie, Textil, Industriemaschinen.'},{title:'Digitales Banking',desc:'Vollständige Online-Banking-Plattform, von überall zugänglich.'}],
+    presBadge: 'Afrikanisches Netzwerk',presTitle: 'Unsere Präsenz in Afrika',presSub: '8 vertretene Länder, ein starkes Partnernetzwerk.',leadBadge: 'Führung',leadTitle: 'Unser Führungsteam',leadSub: 'Visionäre Führungspersönlichkeiten für Afrikas finanzielle Entwicklung.',newsBadge: 'Pressemitteilungen',newsTitle: 'Neueste Nachrichten',newsSub: 'Offizielle Ankündigungen und Neuigkeiten von FICDES.',
+    news: [{title:'Start des digitalen Bankings',desc:'FICDES kündigt den offiziellen Start seiner digitalen Bankplattform an.',date:'Veröffentlicht am 15. September 2025'},{title:'Neue Filiale in Lomé',desc:'Eine neue FICDES BANK-Filiale öffnete in Lomé, Togo.',date:'Veröffentlicht am 10. August 2025'},{title:'Strategische Partnerschaft',desc:'Unterzeichnung einer Partnerschaft zur Unterstützung afrikanischer KMU.',date:'Veröffentlicht am 25. Juli 2025'}],
+    contactTitle: 'Kontakt',contactSub: 'Unser Team beantwortet alle Ihre Fragen.',formLabels: {to:'An:',name:'Vollständiger Name',email:'E-Mail',message:'Nachricht'},formPH: {to:'Empfänger wählen',name:'Ihr Name',email:'Ihre E-Mail',message:'Beschreiben Sie Ihr Anliegen...'},sendBtn: 'Nachricht senden'
+  },
+  AR: {
+    dir: 'rtl',
+    nav: ['من نحن','الأنشطة','المنتجات','الخدمات','الحضور','أرقام','الأخبار','اتصل بنا'],
+    heroEyebrow: 'تمويل دولي · عابر للقارات',heroValues: 'الابتكار • الشفافية • الثقة',heroCta: 'فتح حساب',heroProducts: 'منتجاتنا',aboutLabel: 'من نحن؟',aboutTitle: 'حول FICDES',
+    aboutTexts: ['FICDES INVESTMENT GROUP هي مؤسسة مالية عصرية عابرة للقارات، متخصصة في التمويل الدولي والمصرفية الرقمية وتحويلات الأموال الدولية.','تأسست في 2020 في إسطنبول، وأنشأت مقرها الدولي في كلاركسبرغ بالولايات المتحدة.','تدعم FICDES BANK S.A الأفراد والموظفين والمؤسسات الصغيرة والمتوسطة والمشغلين الاقتصاديين بتمويل المشاريع في أفريقيا.','تمثل FICDES BANK S.A الثقة والأداء والابتكار لخدمة التنمية المستدامة.'],
+    actBadge: 'القطاعات',actTitle: 'أنشطتنا',actSub: 'مجموعة متنوعة تعمل في القطاعات الاستراتيجية للاقتصاد الأفريقي والدولي.',activities: ['التجارة الدولية','الاستيراد / التصدير','الاستشارات والاستثمار','العقارات','الآلات الصناعية','المنسوجات','الطاقة','الاستشارات التجارية'],statsTitle: 'أرقام رئيسية',statsSub: 'نتائج ملموسة تعكس التزامنا.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['النمو السنوي','العملاء الراضون','الشركاء الاستراتيجيون','الدول الممثلة'],prodBadge: 'المنتجات الرئيسية',prodTitle: 'منتجاتنا',prodSub: 'حلول مالية مبتكرة مصممة لدعم حياتك وطموحاتك.',svcBadge: 'الحلول المصرفية',servicesTitle: 'خدماتنا',servicesSub: 'خدمات مالية شاملة لكل مرحلة من مسيرتك.',
+    services: [{title:'الحسابات المصرفية',desc:'حلول آمنة للأفراد والشركات مع الوصول الرقمي على مدار الساعة.'},{title:'القروض والائتمان',desc:'تمويل مصمم لمشاريعكم الشخصية والعقارية والمهنية.'},{title:'الاستثمارات',desc:'فرص متنوعة: عقارات، طاقة، منسوجات، آلات صناعية.'},{title:'المصرفية الرقمية',desc:'منصة مصرفية رقمية كاملة يمكن الوصول إليها من أي مكان.'}],
+    presBadge: 'الشبكة الأفريقية',presTitle: 'حضورنا في أفريقيا',presSub: '8 دول ممثلة، شبكة شركاء قوية لمرافقتكم في كل مكان.',leadBadge: 'القيادة',leadTitle: 'فريقنا القيادي',leadSub: 'قادة ذوو رؤية ملتزمون بالتنمية المالية لأفريقيا.',newsBadge: 'بيانات صحفية',newsTitle: 'آخر الأخبار',newsSub: 'الإعلانات الرسمية والأخبار من FICDES INVESTMENT GROUP.',
+    news: [{title:'إطلاق الخدمات المصرفية الرقمية',desc:'تُعلن FICDES عن الإطلاق الرسمي لمنصتها المصرفية الرقمية.',date:'نُشر في 15 سبتمبر 2025'},{title:'فرع جديد في لومي',desc:'افتتح فرع جديد لـ FICDES BANK في لومي، توغو.',date:'نُشر في 10 أغسطس 2025'},{title:'شراكة استراتيجية',desc:'توقيع شراكة لدعم الشركات الصغيرة والمتوسطة الأفريقية.',date:'نُشر في 25 يوليو 2025'}],
+    contactTitle: 'اتصل بنا',contactSub: 'فريقنا متاح للإجابة على جميع استفساراتكم.',formLabels: {to:'إلى:',name:'الاسم الكامل',email:'البريد الإلكتروني',message:'الرسالة'},formPH: {to:'اختر المستلم',name:'اسمك',email:'بريدك الإلكتروني',message:'صف احتياجك...'},sendBtn: 'إرسال الرسالة'
+  },
+  ZH: {
+    dir: 'ltr',
+    nav: ['关于我们','业务','产品','服务','存在','数据','新闻','联系'],
+    heroEyebrow: '国际金融 · 泛非洲',heroValues: '创新 • 透明 • 信任',heroCta: '开户',heroProducts: '我们的产品',aboutLabel: '我们是谁？',aboutTitle: '关于 FICDES',
+    aboutTexts: ['FICDES INVESTMENT GROUP 是一家现代泛非金融机构，专注于国际金融、网上银行、数字银行转型和国际汇款。','2020年成立于土耳其伊斯坦布尔，国际总部设于美国克拉克斯堡。','FICDES BANK S.A 为个人、公务员、中小企业和经济运营商提供非洲项目融资支持。','FICDES BANK S.A 体现了信任、绩效和创新，为可持续发展服务。'],
+    actBadge: '行业',actTitle: '我们的业务',actSub: '多元化集团，在非洲和国际经济的战略领域运营。',activities: ['国际贸易','进出口','咨询与投资','房地产','工业机械','纺织','能源','企业咨询'],statsTitle: '关键数据',statsSub: '反映我们承诺的具体成果。',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['年度增长','满意客户','战略合作伙伴','代表国家'],prodBadge: '旗舰产品',prodTitle: '我们的产品',prodSub: '为您的生活和雄心设计的创新金融解决方案。',svcBadge: '银行解决方案',servicesTitle: '我们的服务',servicesSub: '覆盖您旅程每个阶段的全面金融服务。',
+    services: [{title:'银行账户',desc:'为个人和企业提供安全解决方案，全天候数字访问。'},{title:'贷款与信贷',desc:'为个人、房地产和专业项目量身定制的融资。'},{title:'投资',desc:'多元化机会：房地产、能源、纺织、工业机械。'},{title:'数字银行',desc:'完整的在线银行平台，随时随地访问。'}],
+    presBadge: '非洲网络',presTitle: '我们在非洲的存在',presSub: '8个国家代表，坚实的合作伙伴网络。',leadBadge: '领导层',leadTitle: '我们的领导团队',leadSub: '致力于非洲金融发展的远见卓识的领导者。',newsBadge: '新闻稿',newsTitle: '最新新闻',newsSub: 'FICDES INVESTMENT GROUP的官方公告和新闻。',
+    news: [{title:'数字银行发布',desc:'FICDES官方宣布推出其数字银行平台。',date:'2025年9月15日发布'},{title:'洛美新分行',desc:'FICDES BANK新分行在多哥洛美开业。',date:'2025年8月10日发布'},{title:'战略合作',desc:'签署合作协议，支持非洲中小企业。',date:'2025年7月25日发布'}],
+    contactTitle: '联系我们',contactSub: '我们的团队随时准备回答您的问题。',formLabels: {to:'收件人:',name:'全名',email:'邮箱',message:'留言'},formPH: {to:'选择收件人',name:'您的姓名',email:'您的邮箱',message:'描述您的需求...'},sendBtn: '发送消息'
+  },
+  RU: {
+    dir: 'ltr',
+    nav: ['О нас','Деятельность','Продукты','Услуги','Присутствие','Показатели','Новости','Контакты'],
+    heroEyebrow: 'Международные финансы · Панафриканский',heroValues: 'Инновации • Прозрачность • Доверие',heroCta: 'Открыть счёт',heroProducts: 'Наши продукты',aboutLabel: 'КТО МЫ?',aboutTitle: 'О FICDES',
+    aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A — современное панафриканское финансовое учреждение, специализирующееся на международных финансах, онлайн-банкинге и международных денежных переводах.','Основан в 2020 году в Стамбуле; международная штаб-квартира — Кларксбург, США.','FICDES BANK S.A поддерживает частных лиц, госслужащих, МСП и экономических операторов в финансировании проектов в Африке.','FICDES BANK S.A воплощает доверие, эффективность и инновации для устойчивого развития.'],
+    actBadge: 'Секторы',actTitle: 'Наша деятельность',actSub: 'Диверсифицированная группа, работающая в стратегических секторах африканской и международной экономики.',activities: ['Международная торговля','Импорт / Экспорт','Консультации и инвестиции','Недвижимость','Промышленные машины','Текстиль','Энергетика','Бизнес-консалтинг'],statsTitle: 'Ключевые показатели',statsSub: 'Конкретные результаты, отражающие наши обязательства.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Годовой рост','Довольные клиенты','Стратегические партнёры','Представленных стран'],prodBadge: 'Ключевые продукты',prodTitle: 'Наши продукты',prodSub: 'Инновационные финансовые решения для вашей жизни и амбиций.',svcBadge: 'Банковские решения',servicesTitle: 'Наши услуги',servicesSub: 'Комплексные финансовые услуги на каждом этапе вашего пути.',
+    services: [{title:'Банковские счета',desc:'Безопасные решения для физических лиц и компаний с круглосуточным цифровым доступом.'},{title:'Кредиты',desc:'Финансирование для личных, недвижимостных и профессиональных проектов.'},{title:'Инвестиции',desc:'Диверсифицированные возможности: недвижимость, энергетика, текстиль, машины.'},{title:'Цифровой банкинг',desc:'Полная онлайн-банковская платформа, доступная из любой точки мира.'}],
+    presBadge: 'Африканская сеть',presTitle: 'Наше присутствие в Африке',presSub: '8 представленных стран, надёжная партнёрская сеть.',leadBadge: 'Руководство',leadTitle: 'Наша команда руководителей',leadSub: 'Дальновидные лидеры, преданные финансовому развитию Африки.',newsBadge: 'Пресс-релизы',newsTitle: 'Последние новости',newsSub: 'Официальные объявления и новости от FICDES INVESTMENT GROUP.',
+    news: [{title:'Запуск цифрового банка',desc:'FICDES официально объявляет о запуске своей цифровой банковской платформы.',date:'Опубликовано 15 сентября 2025'},{title:'Новый офис в Ломе',desc:'Новый офис FICDES BANK открылся в Ломе, Того.',date:'Опубликовано 10 августа 2025'},{title:'Стратегическое партнёрство',desc:'Подписано партнёрство для поддержки африканских МСП.',date:'Опубликовано 25 июля 2025'}],
+    contactTitle: 'Связаться с нами',contactSub: 'Наша команда готова ответить на все ваши вопросы.',formLabels: {to:'Кому:',name:'Полное имя',email:'Email',message:'Сообщение'},formPH: {to:'Выбрать получателя',name:'Ваше имя',email:'Ваш email',message:'Опишите вашу потребность...'},sendBtn: 'Отправить сообщение'
+  }
+};
+
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const setText = (s, v) => { const e = $(s); if (e && v != null) e.textContent = v; };
+const setAttr = (s, a, v) => { const e = $(s); if (e && v != null) e[a] = v; };
+
+const LangStore = {
+  KEY: 'ficdes_lang',
+  get()  { try { return localStorage.getItem(this.KEY) || 'FR'; } catch { return 'FR'; } },
+  set(l) { try { localStorage.setItem(this.KEY, l); } catch {} }
+};
+
+function applyLang(lang) {
+  const t = T[lang]; if (!t) return;
+  document.documentElement.dir  = t.dir;
+  document.documentElement.lang = lang.toLowerCase();
+  const navSel = ['.nav-about','.nav-activities','.nav-products','.nav-services','.nav-presence','.nav-stats','.nav-news','.nav-contact'];
+  navSel.forEach((s, i) => setText(s, t.nav[i]));
+  setText('.hero-eyebrow-text', t.heroEyebrow);
+  setText('.hero-values',       t.heroValues);
+  setText('.hero-cta',          t.heroCta);
+  setText('.hero-products-link',t.heroProducts);
+  setText('.about-label-text', t.aboutLabel);
+  setText('.about-title',      t.aboutTitle);
+  $$('#about .about-text').forEach((p, i) => { if (t.aboutTexts[i]) p.textContent = t.aboutTexts[i]; });
+  setText('.act-badge', t.actBadge); setText('.act-title', t.actTitle); setText('.act-sub', t.actSub);
+  const actSpans = ['.act-commerce','.act-import','.act-conseil','.act-immo','.act-machines','.act-textile','.act-energie','.act-entreprise'];
+  actSpans.forEach((s, i) => setText(s, t.activities[i]));
+  setText('.stats-title', t.statsTitle); setText('.stats-sub', t.statsSub);
+  $$('.stat-value').forEach((e, i) => { if (t.statsValues[i] != null) e.textContent = t.statsValues[i]; });
+  $$('.stat-desc').forEach((e, i) => { if (t.statsDesc[i]) e.textContent = t.statsDesc[i]; });
+  setText('.prod-badge', t.prodBadge); setText('.prod-title', t.prodTitle); setText('.prod-sub', t.prodSub);
+  setText('.svc-badge', t.svcBadge); setText('.services-title', t.servicesTitle); setText('.services-sub', t.servicesSub);
+  t.services.forEach((s, i) => { setText(`.service-title-${i+1}`, s.title); setText(`.service-desc-${i+1}`, s.desc); });
+  setText('.pres-badge', t.presBadge); setText('.pres-title', t.presTitle); setText('.pres-sub', t.presSub);
+  setText('.lead-badge', t.leadBadge); setText('.lead-title', t.leadTitle); setText('.lead-sub', t.leadSub);
+  setText('.news-badge', t.newsBadge); setText('.news-section-title', t.newsTitle); setText('.news-section-sub', t.newsSub);
+  t.news.forEach((n, i) => { setText(`.news-title-${i+1}`, n.title); setText(`.news-desc-${i+1}`, n.desc); setText(`.news-date-${i+1}`, n.date); });
+  setText('.contact-title', t.contactTitle); setText('.contact-sub', t.contactSub);
+  setText('.form-label-to', t.formLabels.to); setText('.form-label-name', t.formLabels.name);
+  setText('.form-label-email', t.formLabels.email); setText('.form-label-message', t.formLabels.message);
+  setAttr('#contact-name', 'placeholder', t.formPH.name);
+  setAttr('#contact-email', 'placeholder', t.formPH.email);
+  setAttr('#contact-message', 'placeholder', t.formPH.message);
+  setText('.form-to-placeholder', t.formPH.to);
+  setText('.form-submit-text', t.sendBtn);
+  const sel = $('#lang-select'); if (sel) sel.value = lang;
+}
+
+function initReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  $$('.reveal').forEach(el => observer.observe(el));
+}
+
+function initNavbar() {
+  const nav = $('#navbar');
+  const toggle = () => nav && nav.classList.toggle('scrolled', window.scrollY > 50);
+  window.addEventListener('scroll', toggle, { passive: true });
+  toggle();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  applyLang(LangStore.get());
+  $('#lang-select').addEventListener('change', e => { applyLang(e.target.value); LangStore.set(e.target.value); });
+  initReveal();
+  initNavbar();
+});
+</script>
+</body>
+</html>
