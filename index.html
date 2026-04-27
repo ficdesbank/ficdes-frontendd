@@ -238,7 +238,12 @@ ul   { list-style: none; }
 
 #hero h2 {
   font-family: var(--font-body); font-size: clamp(.95rem,1.8vw,1.15rem);
-  font-weight: 400; opacity: .6; margin-bottom: 18px;
+  font-weight: 800;
+  color: #4A9EE8;
+  letter-spacing: .06em;
+  text-shadow: 0 0 24px rgba(74,158,232,.35);
+  opacity: 1;
+  margin-bottom: 18px;
 }
 
 .hero-tagline { font-size: .92rem; opacity: .55; margin-bottom: 8px; }
@@ -716,6 +721,181 @@ ul   { list-style: none; }
 .presence-role { font-size: .82rem; color: rgba(255,255,255,.5); }
 
 /* ══════════════════════════════════════════════════════════════
+   SECTION PARTENAIRES BANCAIRES
+══════════════════════════════════════════════════════════════ */
+#partenaires {
+  padding: 80px 0 72px;
+  background: linear-gradient(170deg, var(--navy) 0%, var(--navy-mid) 100%);
+  position: relative;
+  overflow: hidden;
+}
+#partenaires::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 10% 50%, rgba(200,153,42,.07) 0%, transparent 50%),
+                    radial-gradient(circle at 90% 50%, rgba(0,149,122,.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+#partenaires::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,153,42,.4), transparent);
+}
+.partners-header {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative; z-index: 2;
+  padding: 0 28px;
+}
+.partners-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-body);
+  font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--gold-lt);
+  margin-bottom: 14px;
+}
+.partners-eyebrow::before,
+.partners-eyebrow::after {
+  content: ''; display: block;
+  width: 28px; height: 1px; background: var(--gold);
+}
+.partners-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700; color: var(--white);
+  margin-bottom: 10px; line-height: 1.15;
+}
+.partners-title em { font-style: normal; color: var(--gold-lt); }
+.partners-subtitle {
+  font-family: var(--font-body);
+  font-size: .9rem; color: rgba(255,255,255,.45);
+  max-width: 500px; margin: 0 auto;
+}
+.partners-counts {
+  display: flex; justify-content: center; gap: 36px;
+  margin-bottom: 44px;
+  position: relative; z-index: 2;
+  flex-wrap: wrap;
+  padding: 0 28px;
+}
+.count-item { text-align: center; }
+.count-value {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 800;
+  color: var(--gold-lt);
+  line-height: 1;
+  display: block;
+}
+.count-label {
+  font-family: var(--font-body);
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-top: 4px;
+  display: block;
+}
+.count-divider {
+  width: 1px;
+  background: rgba(255,255,255,.12);
+  align-self: stretch;
+  margin: 4px 0;
+}
+.carousel-group {
+  margin-bottom: 44px;
+  position: relative; z-index: 2;
+}
+.carousel-group:last-of-type { margin-bottom: 0; }
+.carousel-label {
+  display: flex; align-items: center; gap: 14px;
+  padding: 0 40px;
+  margin-bottom: 16px;
+}
+.carousel-label-line {
+  flex: 1; height: 1px;
+  background: rgba(255,255,255,.1);
+}
+.carousel-label-text {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body);
+  font-size: .7rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+.label-foreign { color: var(--gold-lt); background: rgba(200,153,42,.12); border: 1px solid rgba(200,153,42,.3); }
+.label-local   { color: var(--teal-lt); background: rgba(0,149,122,.12);  border: 1px solid rgba(0,149,122,.3); }
+.carousel-track-wrap { position: relative; overflow: hidden; }
+.carousel-track-wrap::before,
+.carousel-track-wrap::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; width: 90px;
+  z-index: 3; pointer-events: none;
+}
+.carousel-track-wrap::before { left: 0;  background: linear-gradient(to right, var(--navy-mid), transparent); }
+.carousel-track-wrap::after  { right: 0; background: linear-gradient(to left,  var(--navy-mid), transparent); }
+.carousel-track { display: flex; gap: 20px; width: max-content; will-change: transform; }
+.carousel-foreign { animation: scrollLeft var(--duration, 40s) linear infinite; }
+.carousel-local   { animation: scrollLeft var(--duration, 32s) linear infinite; }
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.carousel-track-wrap:hover .carousel-track { animation-play-state: paused; }
+.logo-card {
+  flex-shrink: 0;
+  width: 200px; height: 88px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px 20px;
+  transition: background var(--tr), border-color var(--tr), transform var(--tr);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.logo-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(200,153,42,.06) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity var(--tr);
+}
+.logo-card:hover { background: rgba(255,255,255,.11); border-color: rgba(200,153,42,.35); transform: translateY(-3px); }
+.logo-card:hover::before { opacity: 1; }
+.logo-card img {
+  max-width: 100%; max-height: 54px;
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
+  transition: transform var(--tr), opacity var(--tr);
+}
+.logo-card:hover img { opacity: 1; filter: none; transform: scale(1.06); }
+.logo-card--local:hover  { border-color: rgba(0,149,122,.4); }
+.logo-card--local::before { background: linear-gradient(135deg, rgba(0,149,122,.06) 0%, transparent 100%); }
+.partners-note {
+  text-align: center;
+  margin-top: 40px;
+  font-family: var(--font-body);
+  font-size: .78rem;
+  color: rgba(255,255,255,.22);
+  letter-spacing: .04em;
+  position: relative; z-index: 2;
+}
+.partners-note i { color: var(--gold); margin: 0 4px; }
+@media (max-width: 720px) {
+  .carousel-label { padding: 0 20px; }
+  .carousel-track-wrap::before,
+  .carousel-track-wrap::after { width: 40px; }
+  .logo-card { width: 160px; height: 72px; }
+  .logo-card img { max-height: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { animation-play-state: paused !important; }
+}
+
+/* ══════════════════════════════════════════════════════════════
    LEADERSHIP
 ══════════════════════════════════════════════════════════════ */
 #leadership { padding: 108px 0; background: var(--white); }
@@ -922,8 +1102,9 @@ footer {
         <li><a href="#activities" class="nav-activities">Activités</a></li>
         <li><a href="#products"   class="nav-products">Produits</a></li>
         <li><a href="#services"   class="nav-services">Services</a></li>
-        <li><a href="#presence"   class="nav-presence">Présence</a></li>
-        <li><a href="#stats"      class="nav-stats">Chiffres</a></li>
+        <li><a href="#presence"    class="nav-presence">Présence</a></li>
+        <li><a href="#partenaires" class="nav-partenaires">Partenaires</a></li>
+        <li><a href="#stats"       class="nav-stats">Chiffres</a></li>
         <li><a href="#news"       class="nav-news">Actualités</a></li>
         <li><a href="#contact"    class="nav-contact">Contact</a></li>
       </ul>
@@ -1264,6 +1445,122 @@ footer {
   </div>
 </section>
 
+<!-- ══════════════ SECTION PARTENAIRES BANCAIRES ══════════════ -->
+<section id="partenaires" aria-labelledby="partners-h">
+
+  <!-- En-tête -->
+  <div class="partners-header">
+    <div class="partners-eyebrow">
+      <span class="part-eyebrow">Nos Partenaires Bancaires</span>
+    </div>
+    <h2 id="partners-h" class="partners-title">
+      Un réseau de confiance <em>mondial &amp; africain</em>
+    </h2>
+    <p class="partners-subtitle">
+      FICDES BANK S.A collabore avec des institutions financières de premier plan
+      sur les cinq continents pour garantir la fiabilité et la portée de vos opérations.
+    </p>
+  </div>
+
+  <!-- Compteurs synthétiques -->
+  <div class="partners-counts">
+    <div class="count-item">
+      <span class="count-value">09</span>
+      <span class="count-label">Banques étrangères</span>
+    </div>
+    <div class="count-divider" aria-hidden="true"></div>
+    <div class="count-item">
+      <span class="count-value">05</span>
+      <span class="count-label">Banques africaines</span>
+    </div>
+    <div class="count-divider" aria-hidden="true"></div>
+    <div class="count-item">
+      <span class="count-value">14+</span>
+      <span class="count-label">Partenaires au total</span>
+    </div>
+  </div>
+
+  <!-- ══ CARROUSEL 1 : Banques Étrangères (FEB) ══ -->
+  <div class="carousel-group" aria-label="Banques étrangères partenaires">
+    <div class="carousel-label">
+      <div class="carousel-label-line" aria-hidden="true"></div>
+      <span class="carousel-label-text label-foreign">
+        <i class="fa-solid fa-globe" aria-hidden="true"></i>
+        Banques Étrangères &amp; Internationales
+      </span>
+      <div class="carousel-label-line" aria-hidden="true"></div>
+    </div>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track carousel-foreign" style="--duration: 40s"
+           role="list" aria-label="Logos banques étrangères">
+        <!-- Lot A -->
+        <div class="logo-card" role="listitem" title="United Trust Bank"><img src="assets/FEB (1).png" alt="United Trust Bank" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="Zurich Bank"><img src="assets/FEB (2).png" alt="Zurich Bank" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="Ziraat Bankası"><img src="assets/FEB (3).png" alt="Ziraat Bankası" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="Crédit Mutuel"><img src="assets/FEB (4).png" alt="Crédit Mutuel" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="Point Bank Ltd"><img src="assets/FEB (5).png" alt="Point Bank Ltd" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="Chase Bank"><img src="assets/FEB (6).png" alt="Chase Bank" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="HSBC"><img src="assets/FEB (7).png" alt="HSBC" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="Bank of America"><img src="assets/FEB (8).png" alt="Bank of America" loading="lazy"></div>
+        <div class="logo-card" role="listitem" title="BNP Paribas"><img src="assets/FEB (9).png" alt="BNP Paribas" loading="lazy"></div>
+        <!-- Lot B (clone boucle infinie) -->
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (1).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (2).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (3).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (4).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (5).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (6).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (7).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (8).png" alt="" loading="lazy"></div>
+        <div class="logo-card" role="presentation" aria-hidden="true"><img src="assets/FEB (9).png" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ CARROUSEL 2 : Banques Africaines (HJK) ══ -->
+  <div class="carousel-group" aria-label="Banques africaines partenaires">
+    <div class="carousel-label">
+      <div class="carousel-label-line" aria-hidden="true"></div>
+      <span class="carousel-label-text label-local">
+        <i class="fa-solid fa-earth-africa" aria-hidden="true"></i>
+        Banques Africaines Locales
+      </span>
+      <div class="carousel-label-line" aria-hidden="true"></div>
+    </div>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track carousel-local" style="--duration: 32s"
+           role="list" aria-label="Logos banques africaines">
+        <!-- Lot A -->
+        <div class="logo-card logo-card--local" role="listitem" title="UBA – United Bank for Africa"><img src="assets/HJK (1).png" alt="UBA – United Bank for Africa" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="listitem" title="SUNU Bank"><img src="assets/HJK (2).png" alt="SUNU Bank" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="listitem" title="Ecobank – The Pan African Bank"><img src="assets/HJK (3).png" alt="Ecobank – The Pan African Bank" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="listitem" title="Coris Bank International"><img src="assets/HJK (4).png" alt="Coris Bank International" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="listitem" title="Banque Partenaire"><img src="assets/HJK (5).png" alt="Banque Partenaire Africaine" loading="lazy"></div>
+        <!-- Lot B (clone boucle infinie) -->
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (1).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (2).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (3).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (4).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (5).png" alt="" loading="lazy"></div>
+        <!-- Lot C (troisième copie pour petits écrans) -->
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (1).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (2).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (3).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (4).png" alt="" loading="lazy"></div>
+        <div class="logo-card logo-card--local" role="presentation" aria-hidden="true"><img src="assets/HJK (5).png" alt="" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Note de bas de section -->
+  <p class="partners-note">
+    <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+    Partenariats officiels · Correspondants agréés · Réseaux de paiement certifiés
+  </p>
+
+</section>
+<!-- ══════════════ FIN SECTION PARTENAIRES ══════════════ -->
+
 <!-- ════════════════════ LEADERSHIP ════════════════════════════ -->
 <section id="leadership" aria-labelledby="lead-h">
   <div class="container">
@@ -1412,6 +1709,7 @@ footer {
       <a href="#about">À propos</a>
       <a href="#products">Produits</a>
       <a href="#presence">Présence</a>
+      <a href="#partenaires">Partenaires</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -1424,7 +1722,7 @@ footer {
 const T = {
   FR: {
     dir: 'ltr',
-    nav: ['À propos','Activités','Produits','Services','Présence','Chiffres','Actualités','Contact'],
+    nav: ['À propos','Activités','Produits','Services','Présence','Partenaires','Chiffres','Actualités','Contact'],
     heroEyebrow: 'Finance Internationale · Panafricaine',
     heroValues: 'Innovation • Transparence • Confiance',
     heroCta: 'Ouvrir un compte',
@@ -1455,6 +1753,7 @@ const T = {
     ],
     presBadge: 'Réseau africain', presTitle: 'Notre présence en Afrique',
     presSub: '8 pays représentés, un réseau de partenaires solides pour vous accompagner partout.',
+    partEyebrow: 'Nos Partenaires Bancaires',
     leadBadge: 'Direction', leadTitle: 'Notre équipe dirigeante',
     leadSub: 'Des leaders visionnaires engagés pour le développement financier de l\'Afrique.',
     newsBadge: 'Communiqués', newsTitle: 'Dernières actualités',
@@ -1471,7 +1770,7 @@ const T = {
   },
   EN: {
     dir: 'ltr',
-    nav: ['About','Activities','Products','Services','Presence','Figures','News','Contact'],
+    nav: ['About','Activities','Products','Services','Presence','Partners','Figures','News','Contact'],
     heroEyebrow: 'International Finance · Pan-African',
     heroValues: 'Innovation • Transparency • Trust',
     heroCta: 'Open an account',
@@ -1518,7 +1817,7 @@ const T = {
   },
   ES: {
     dir: 'ltr',
-    nav: ['Acerca de','Actividades','Productos','Servicios','Presencia','Cifras','Noticias','Contacto'],
+    nav: ['Acerca de','Actividades','Productos','Servicios','Presencia','Socios','Cifras','Noticias','Contacto'],
     heroEyebrow: 'Finanzas Internacionales · Panafricano',heroValues: 'Innovación • Transparencia • Confianza',heroCta: 'Abrir una cuenta',heroProducts: 'Nuestros productos',aboutLabel: '¿QUIÉNES SOMOS?',aboutTitle: 'Acerca de FICDES',
     aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A es una institución financiera panafricana moderna, especializada en finanzas internacionales, banca en línea, digitalización bancaria y transferencias internacionales de dinero.','Fundada en 2020 en Estambul (Turquía), el banco estableció su sede internacional en Clarksburg, EE. UU.','FICDES BANK S.A apoya a particulares, funcionarios, PYME y operadores económicos con financiación de proyectos en África.','FICDES BANK S.A encarna confianza, rendimiento e innovación al servicio del desarrollo sostenible.'],
     actBadge: 'Sectores',actTitle: 'Nuestras actividades',actSub: 'Un grupo diversificado operando en los sectores estratégicos de la economía africana e internacional.',activities: ['Comercio Internacional','Importación / Exportación','Asesoría e Inversión','Bienes Raíces','Maquinaria Industrial','Textil','Energía','Consultoría Empresarial'],statsTitle: 'Cifras clave',statsSub: 'Resultados concretos que reflejan nuestro compromiso.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Crecimiento anual','Clientes satisfechos','Socios estratégicos','Países'],prodBadge: 'Productos destacados',prodTitle: 'Nuestros productos',prodSub: 'Soluciones financieras innovadoras diseñadas para acompañar su vida y ambiciones.',svcBadge: 'Soluciones bancarias',servicesTitle: 'Nuestros servicios',servicesSub: 'Servicios financieros completos para cada etapa de su trayectoria.',
@@ -1529,7 +1828,7 @@ const T = {
   },
   TR: {
     dir: 'ltr',
-    nav: ['Hakkında','Faaliyetler','Ürünler','Hizmetler','Varlık','Rakamlar','Haberler','İletişim'],
+    nav: ['Hakkında','Faaliyetler','Ürünler','Hizmetler','Varlık','Ortaklar','Rakamlar','Haberler','İletişim'],
     heroEyebrow: 'Uluslararası Finans · Panafrikan',heroValues: 'İnovasyon • Şeffaflık • Güven',heroCta: 'Hesap aç',heroProducts: 'Ürünlerimiz',aboutLabel: 'BİZ KİMİZ?',aboutTitle: 'FICDES Hakkında',
     aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A, uluslararası finans, çevrimiçi bankacılık ve uluslararası para transferi konularında uzmanlaşmış modern bir Pan-Afrika finans kuruluşudur.','2020 yılında İstanbul\'da kurulan banka, uluslararası merkezini ABD\'de Clarksburg\'da kurmuştur.','FICDES BANK S.A, bireyler, memurlar, KOBİ\'ler ve ekonomik operatörlere Afrika\'da proje finansmanı sağlar.','FICDES BANK S.A, güven, performans ve inovasyonu temsil etmektedir.'],
     actBadge: 'Sektörler',actTitle: 'Faaliyetlerimiz',actSub: 'Afrika ve uluslararası ekonominin stratejik sektörlerinde faaliyet gösteren çeşitlendirilmiş bir grup.',activities: ['Uluslararası Ticaret','İthalat / İhracat','Danışmanlık & Yatırım','Gayrimenkul','Endüstriyel Makineler','Tekstil','Enerji','İşletme Danışmanlığı'],statsTitle: 'Ana Rakamlar',statsSub: 'Taahhüdümüzü yansıtan somut sonuçlar.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Yıllık Büyüme','Memnun Müşteriler','Stratejik Ortaklar','Temsil Edilen Ülkeler'],prodBadge: 'Öne Çıkan Ürünler',prodTitle: 'Ürünlerimiz',prodSub: 'Hayatınıza ve hedeflerinize destek olmak için tasarlanmış yenilikçi finansal çözümler.',svcBadge: 'Bankacılık Çözümleri',servicesTitle: 'Hizmetlerimiz',servicesSub: 'Her aşama için kapsamlı finansal hizmetler.',
@@ -1540,7 +1839,7 @@ const T = {
   },
   DE: {
     dir: 'ltr',
-    nav: ['Über uns','Aktivitäten','Produkte','Dienstleistungen','Präsenz','Zahlen','Neuigkeiten','Kontakt'],
+    nav: ['Über uns','Aktivitäten','Produkte','Dienstleistungen','Präsenz','Partner','Zahlen','Neuigkeiten','Kontakt'],
     heroEyebrow: 'Internationale Finanzen · Panafrikanisch',heroValues: 'Innovation • Transparenz • Vertrauen',heroCta: 'Konto eröffnen',heroProducts: 'Unsere Produkte',aboutLabel: 'WER SIND WIR?',aboutTitle: 'Über FICDES',
     aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A ist eine moderne panafrikanische Finanzinstitution, spezialisiert auf internationale Finanzen, Online-Banking und internationale Geldüberweisungen.','Gegründet 2020 in Istanbul, hat die Bank ihren internationalen Hauptsitz in Clarksburg, USA.','FICDES BANK S.A unterstützt Privatpersonen, Beamte, KMU und Wirtschaftsakteure mit Projektfinanzierung in Afrika.','FICDES BANK S.A verkörpert Vertrauen, Leistung und Innovation für nachhaltige Entwicklung.'],
     actBadge: 'Sektoren',actTitle: 'Unsere Aktivitäten',actSub: 'Eine diversifizierte Gruppe in den strategischen Sektoren der afrikanischen und internationalen Wirtschaft.',activities: ['Internationaler Handel','Import / Export','Beratung & Investition','Immobilien','Industriemaschinen','Textil','Energie','Unternehmensberatung'],statsTitle: 'Kennzahlen',statsSub: 'Konkrete Ergebnisse, die unser Engagement widerspiegeln.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Jährliches Wachstum','Zufriedene Kunden','Strategische Partner','Vertretene Länder'],prodBadge: 'Hauptprodukte',prodTitle: 'Unsere Produkte',prodSub: 'Innovative Finanzlösungen für Ihr Leben und Ihre Ambitionen.',svcBadge: 'Banklösungen',servicesTitle: 'Unsere Dienstleistungen',servicesSub: 'Umfassende Finanzdienstleistungen für jede Phase Ihrer Reise.',
@@ -1551,7 +1850,7 @@ const T = {
   },
   AR: {
     dir: 'rtl',
-    nav: ['من نحن','الأنشطة','المنتجات','الخدمات','الحضور','أرقام','الأخبار','اتصل بنا'],
+    nav: ['من نحن','الأنشطة','المنتجات','الخدمات','الحضور','الشركاء','أرقام','الأخبار','اتصل بنا'],
     heroEyebrow: 'تمويل دولي · عابر للقارات',heroValues: 'الابتكار • الشفافية • الثقة',heroCta: 'فتح حساب',heroProducts: 'منتجاتنا',aboutLabel: 'من نحن؟',aboutTitle: 'حول FICDES',
     aboutTexts: ['FICDES INVESTMENT GROUP هي مؤسسة مالية عصرية عابرة للقارات، متخصصة في التمويل الدولي والمصرفية الرقمية وتحويلات الأموال الدولية.','تأسست في 2020 في إسطنبول، وأنشأت مقرها الدولي في كلاركسبرغ بالولايات المتحدة.','تدعم FICDES BANK S.A الأفراد والموظفين والمؤسسات الصغيرة والمتوسطة والمشغلين الاقتصاديين بتمويل المشاريع في أفريقيا.','تمثل FICDES BANK S.A الثقة والأداء والابتكار لخدمة التنمية المستدامة.'],
     actBadge: 'القطاعات',actTitle: 'أنشطتنا',actSub: 'مجموعة متنوعة تعمل في القطاعات الاستراتيجية للاقتصاد الأفريقي والدولي.',activities: ['التجارة الدولية','الاستيراد / التصدير','الاستشارات والاستثمار','العقارات','الآلات الصناعية','المنسوجات','الطاقة','الاستشارات التجارية'],statsTitle: 'أرقام رئيسية',statsSub: 'نتائج ملموسة تعكس التزامنا.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['النمو السنوي','العملاء الراضون','الشركاء الاستراتيجيون','الدول الممثلة'],prodBadge: 'المنتجات الرئيسية',prodTitle: 'منتجاتنا',prodSub: 'حلول مالية مبتكرة مصممة لدعم حياتك وطموحاتك.',svcBadge: 'الحلول المصرفية',servicesTitle: 'خدماتنا',servicesSub: 'خدمات مالية شاملة لكل مرحلة من مسيرتك.',
@@ -1562,7 +1861,7 @@ const T = {
   },
   ZH: {
     dir: 'ltr',
-    nav: ['关于我们','业务','产品','服务','存在','数据','新闻','联系'],
+    nav: ['关于我们','业务','产品','服务','存在','合作伙伴','数据','新闻','联系'],
     heroEyebrow: '国际金融 · 泛非洲',heroValues: '创新 • 透明 • 信任',heroCta: '开户',heroProducts: '我们的产品',aboutLabel: '我们是谁？',aboutTitle: '关于 FICDES',
     aboutTexts: ['FICDES INVESTMENT GROUP 是一家现代泛非金融机构，专注于国际金融、网上银行、数字银行转型和国际汇款。','2020年成立于土耳其伊斯坦布尔，国际总部设于美国克拉克斯堡。','FICDES BANK S.A 为个人、公务员、中小企业和经济运营商提供非洲项目融资支持。','FICDES BANK S.A 体现了信任、绩效和创新，为可持续发展服务。'],
     actBadge: '行业',actTitle: '我们的业务',actSub: '多元化集团，在非洲和国际经济的战略领域运营。',activities: ['国际贸易','进出口','咨询与投资','房地产','工业机械','纺织','能源','企业咨询'],statsTitle: '关键数据',statsSub: '反映我们承诺的具体成果。',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['年度增长','满意客户','战略合作伙伴','代表国家'],prodBadge: '旗舰产品',prodTitle: '我们的产品',prodSub: '为您的生活和雄心设计的创新金融解决方案。',svcBadge: '银行解决方案',servicesTitle: '我们的服务',servicesSub: '覆盖您旅程每个阶段的全面金融服务。',
@@ -1573,7 +1872,7 @@ const T = {
   },
   RU: {
     dir: 'ltr',
-    nav: ['О нас','Деятельность','Продукты','Услуги','Присутствие','Показатели','Новости','Контакты'],
+    nav: ['О нас','Деятельность','Продукты','Услуги','Присутствие','Партнёры','Показатели','Новости','Контакты'],
     heroEyebrow: 'Международные финансы · Панафриканский',heroValues: 'Инновации • Прозрачность • Доверие',heroCta: 'Открыть счёт',heroProducts: 'Наши продукты',aboutLabel: 'КТО МЫ?',aboutTitle: 'О FICDES',
     aboutTexts: ['FICDES INVESTMENT GROUP / FICDES BANK S.A — современное панафриканское финансовое учреждение, специализирующееся на международных финансах, онлайн-банкинге и международных денежных переводах.','Основан в 2020 году в Стамбуле; международная штаб-квартира — Кларксбург, США.','FICDES BANK S.A поддерживает частных лиц, госслужащих, МСП и экономических операторов в финансировании проектов в Африке.','FICDES BANK S.A воплощает доверие, эффективность и инновации для устойчивого развития.'],
     actBadge: 'Секторы',actTitle: 'Наша деятельность',actSub: 'Диверсифицированная группа, работающая в стратегических секторах африканской и международной экономики.',activities: ['Международная торговля','Импорт / Экспорт','Консультации и инвестиции','Недвижимость','Промышленные машины','Текстиль','Энергетика','Бизнес-консалтинг'],statsTitle: 'Ключевые показатели',statsSub: 'Конкретные результаты, отражающие наши обязательства.',statsValues: ['+05%','+15 000','+120','8'],statsDesc: ['Годовой рост','Довольные клиенты','Стратегические партнёры','Представленных стран'],prodBadge: 'Ключевые продукты',prodTitle: 'Наши продукты',prodSub: 'Инновационные финансовые решения для вашей жизни и амбиций.',svcBadge: 'Банковские решения',servicesTitle: 'Наши услуги',servicesSub: 'Комплексные финансовые услуги на каждом этапе вашего пути.',
@@ -1599,7 +1898,7 @@ function applyLang(lang) {
   const t = T[lang]; if (!t) return;
   document.documentElement.dir  = t.dir;
   document.documentElement.lang = lang.toLowerCase();
-  const navSel = ['.nav-about','.nav-activities','.nav-products','.nav-services','.nav-presence','.nav-stats','.nav-news','.nav-contact'];
+  const navSel = ['.nav-about','.nav-activities','.nav-products','.nav-services','.nav-presence','.nav-partenaires','.nav-stats','.nav-news','.nav-contact'];
   navSel.forEach((s, i) => setText(s, t.nav[i]));
   setText('.hero-eyebrow-text', t.heroEyebrow);
   setText('.hero-values',       t.heroValues);
@@ -1618,6 +1917,7 @@ function applyLang(lang) {
   setText('.svc-badge', t.svcBadge); setText('.services-title', t.servicesTitle); setText('.services-sub', t.servicesSub);
   t.services.forEach((s, i) => { setText(`.service-title-${i+1}`, s.title); setText(`.service-desc-${i+1}`, s.desc); });
   setText('.pres-badge', t.presBadge); setText('.pres-title', t.presTitle); setText('.pres-sub', t.presSub);
+  if (t.partEyebrow) setText('.part-eyebrow', t.partEyebrow);
   setText('.lead-badge', t.leadBadge); setText('.lead-title', t.leadTitle); setText('.lead-sub', t.leadSub);
   setText('.news-badge', t.newsBadge); setText('.news-section-title', t.newsTitle); setText('.news-section-sub', t.newsSub);
   t.news.forEach((n, i) => { setText(`.news-title-${i+1}`, n.title); setText(`.news-desc-${i+1}`, n.desc); setText(`.news-date-${i+1}`, n.date); });
